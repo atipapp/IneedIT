@@ -17,12 +17,12 @@ import hu.autsoft.pppttl.ineedit.R;
 
 public class RequestCreateOrEditDialog {
 
-    public void show(View view){
+    public void show(View view, String title){
         boolean wrapInScrollView = true;
         MaterialDialog addDialog = new MaterialDialog.Builder(view.getContext())
-                .title(R.string.create_request)
+                .title(title)
                 .customView(R.layout.dialog_request_create, wrapInScrollView)
-                .positiveText(R.string.create)
+                .positiveText(R.string.save)
                 .negativeText(R.string.cancel)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override

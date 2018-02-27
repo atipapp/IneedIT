@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
 
 public class RequestDetailsActivity extends AppCompatActivity {
 
@@ -22,8 +23,8 @@ public class RequestDetailsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
+                dialog.show(view, getString(R.string.edit_request));
             }
         });
     }

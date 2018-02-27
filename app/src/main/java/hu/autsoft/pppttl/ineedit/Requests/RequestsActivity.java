@@ -35,7 +35,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView{
             @Override
             public void onClick(View view) {
                 RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
-                dialog.show(view);
+                dialog.show(view, getString(R.string.create_request));
             }
         });
 

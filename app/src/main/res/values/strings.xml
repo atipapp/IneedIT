@@ -12,6 +12,7 @@
     <string name="request_name">Name</string>
     <string name="url">URL</string>
     <string name="create_request">Create request</string>
-    <string name="create">Create</string>
+    <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="edit_request">Edit request</string>
 </resources>
