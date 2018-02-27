@@ -38,6 +38,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         super.onDestroy();
     }
 
+    @Override protected void onStart(){
+        super.onStart();
+        presenter.autoLogin();
+    }
+
     @Override public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }

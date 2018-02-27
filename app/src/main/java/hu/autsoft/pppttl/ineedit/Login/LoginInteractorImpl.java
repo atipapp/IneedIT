@@ -41,4 +41,8 @@ public class LoginInteractorImpl implements LoginInteractor {
                 });
     }
 
+    @Override
+    public boolean isLoggedIn() {
+        return mAuth != null;
+    }
 }

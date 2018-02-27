@@ -16,4 +16,5 @@ public interface LoginInteractor {
 
     void login(String username, String password, OnLoginFinishedListener listener);
 
+    boolean isLoggedIn();
 }

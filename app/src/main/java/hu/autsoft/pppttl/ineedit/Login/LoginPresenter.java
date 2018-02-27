@@ -7,5 +7,7 @@ package hu.autsoft.pppttl.ineedit.Login;
 public interface LoginPresenter {
     void validateCredentials(String username, String password);
 
+    void autoLogin();
+
     void onDestroy();
 }
