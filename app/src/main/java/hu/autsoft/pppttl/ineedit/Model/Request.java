@@ -7,6 +7,7 @@ package hu.autsoft.pppttl.ineedit.Model;
 public class Request {
     private String name;
     private Status status;
+    private String link;
 
     public enum Status{
         PENDING,
@@ -14,14 +15,16 @@ public class Request {
         DENIED
     }
 
-    public Request(String name, Status status) {
+    public Request(String name, Status status, String link) {
         this.name = name;
         this.status = status;
+        this.link = link;
     }
 
     public Request() {
-        name = "Default";
+        this.name = "Default";
         this.status=Status.PENDING;
+        this.link = "";
     }
 
     public String getName() {
@@ -38,5 +41,13 @@ public class Request {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }
