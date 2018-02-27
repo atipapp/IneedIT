@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit.Requests;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -13,12 +14,13 @@ import java.util.ArrayList;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
 
 /**
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class RequestsActivity extends AppCompatActivity {
+public class RequestsActivity extends AppCompatActivity implements RequestsView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,15 @@ public class RequestsActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ArrayList<Request> requests = new ArrayList<Request>();
-        requests.add(new Request("Request 1", Request.Status.ACCEPTED));
-        requests.add(new Request("Request 2", Request.Status.PENDING));
-        requests.add(new Request("Request 3", Request.Status.DENIED));
+        requests.add(new Request("Request 1", Request.Status.ACCEPTED, ""));
+        requests.add(new Request("Request 2", Request.Status.PENDING, ""));
+        requests.add(new Request("Request 3", Request.Status.DENIED, ""));
 
         recyclerView.setAdapter(new RequestRecyclerViewAdapter(requests, RequestsActivity.this));
     }
 
+    @Override
+    public void navigateToRequest() {
+        startActivity(new Intent(this, RequestDetailsActivity.class));
+    }
 }

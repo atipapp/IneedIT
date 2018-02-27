@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit.Requests;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
 
 /**
  * Created by pppttl on 2018. 02. 26..
@@ -19,12 +21,11 @@ import hu.autsoft.pppttl.ineedit.R;
 public class RequestRecyclerViewAdapter
         extends RecyclerView.Adapter<RequestRecyclerViewAdapter.ViewHolder> {
 
-    private boolean mTwoPane;
-    private AppCompatActivity activity;
+    private RequestsView activity;
 
     private final List<Request> requests;
 
-    public RequestRecyclerViewAdapter(List<Request> requests, AppCompatActivity activity) {
+    public RequestRecyclerViewAdapter(List<Request> requests, RequestsView activity) {
         this.requests = requests;
         this.activity = activity;
     }
@@ -47,7 +48,7 @@ public class RequestRecyclerViewAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                activity.navigateToRequest();
             }
         });
 

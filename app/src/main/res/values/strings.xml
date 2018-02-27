@@ -6,4 +6,7 @@
     <string name="username_error">Wrong username!</string>
     <string name="password_error">Wrong password!</string>
     <string name="title_activity_requests">RequestsActivity</string>
+    <string name="title_activity_request_details">RequestDetailsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="comments">Comments</string>
 </resources>
