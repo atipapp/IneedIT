@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
 import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
 
 /**
@@ -33,8 +34,8 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
+                dialog.show(view);
             }
         });
 
