@@ -1,12 +1,15 @@
 package hu.autsoft.pppttl.ineedit.Login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsActivity;
 
@@ -14,23 +17,22 @@ import hu.autsoft.pppttl.ineedit.Requests.RequestsActivity;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements LoginView {
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.password)
+    EditText password;
 
-    private ProgressBar progressBar;
-    private EditText username;
-    private EditText password;
     private LoginPresenter presenter;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressBar = (ProgressBar) findViewById(R.id.progress);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        findViewById(R.id.button).setOnClickListener(this);
-
         presenter = new LoginPresenterImpl(this,new LoginInteractorImpl());
+        ButterKnife.bind(this);
     }
 
     @Override protected void onDestroy() {
@@ -64,7 +66,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         finish();
     }
 
-    @Override public void onClick(View v) {
+    @OnClick(R.id.loginButton)
+    public void loginClick() {
         presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
 }
