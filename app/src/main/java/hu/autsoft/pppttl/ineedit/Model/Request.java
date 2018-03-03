@@ -8,6 +8,7 @@ public class Request {
     private String name;
     private Status status;
     private String link;
+    private int price;
 
     public enum Status{
         PENDING,
@@ -15,16 +16,18 @@ public class Request {
         DENIED
     }
 
-    public Request(String name, Status status, String link) {
+    public Request(String name, Status status, String link, int price) {
         this.name = name;
         this.status = status;
         this.link = link;
+        this.price = price;
     }
 
     public Request() {
         this.name = "Default";
         this.status=Status.PENDING;
         this.link = "";
+        this.price = 0;
     }
 
     public String getName() {
@@ -49,5 +52,13 @@ public class Request {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

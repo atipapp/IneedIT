@@ -48,9 +48,9 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView{
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ArrayList<Request> requests = new ArrayList<Request>();
-        requests.add(new Request("Request 1", Request.Status.ACCEPTED, ""));
-        requests.add(new Request("Request 2", Request.Status.PENDING, ""));
-        requests.add(new Request("Request 3", Request.Status.DENIED, ""));
+        requests.add(new Request("Request 1", Request.Status.ACCEPTED, "", 1000));
+        requests.add(new Request("Request 2", Request.Status.PENDING, "", 1000));
+        requests.add(new Request("Request 3", Request.Status.DENIED, "", 1000));
 
         recyclerView.setAdapter(new RequestRecyclerViewAdapter(requests, RequestsActivity.this));
     }
