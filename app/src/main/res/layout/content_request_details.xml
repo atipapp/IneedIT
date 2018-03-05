@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="20sp"
-                android:text="http://www.example.com"
+                android:text="@string/n_a"
                 android:autoLink="web"/>
 
         </LinearLayout>
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
-                android:text="5000" />
+                android:text="@string/n_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
-                android:text="Pending" />
+                android:text="@string/n_a" />
         </LinearLayout>
 
         <TextView

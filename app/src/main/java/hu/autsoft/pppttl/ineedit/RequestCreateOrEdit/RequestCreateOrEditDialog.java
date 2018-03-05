@@ -2,6 +2,8 @@ package hu.autsoft.pppttl.ineedit.RequestCreateOrEdit;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -19,7 +21,7 @@ public class RequestCreateOrEditDialog {
 
     public void show(View view, String title, final SaveRequestCallbackListener listener) {
         boolean wrapInScrollView = true;
-        MaterialDialog addDialog = new MaterialDialog.Builder(view.getContext())
+        final MaterialDialog addDialog = new MaterialDialog.Builder(view.getContext())
                 .title(title)
                 .customView(R.layout.dialog_request_create, wrapInScrollView)
                 .positiveText(R.string.save)
@@ -28,13 +30,38 @@ public class RequestCreateOrEditDialog {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         View view = dialog.getView();
-                        String name = ((TextInputEditText) view.findViewById(R.id.requestName)).getText().toString();
-                        String link = ((TextInputEditText) view.findViewById(R.id.requestUrl)).getText().toString();
-                        int price = Integer.parseInt(((TextInputEditText) view.findViewById(R.id.requestPrice)).getText().toString());
+                        String name = ((TextInputEditText) view.findViewById(R.id.requestName)).getText().toString() + "";
+                        String link = ((TextInputEditText) view.findViewById(R.id.requestUrl)).getText().toString() + "";
+
+                        String priceString = ((TextInputEditText) view.findViewById(R.id.requestPrice)).getText().toString();
+                        int price = priceString.length() > 0 ? Integer.parseInt(priceString) : 0;
 
                         listener.onRequestSave(new Request(name, Request.Status.PENDING, link, price));
                     }
                 })
                 .show();
+
+        addDialog.getActionButton(DialogAction.POSITIVE).setEnabled(false);
+        final TextInputEditText nameEditText = addDialog.getView().findViewById(R.id.requestName);
+        nameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0 && s.toString().replace(" ", "").length() > 0) {
+                    addDialog.getActionButton(DialogAction.POSITIVE).setEnabled(true);
+                } else {
+                    addDialog.getActionButton(DialogAction.POSITIVE).setEnabled(false);
+                }
+            }
+        });
     }
 }

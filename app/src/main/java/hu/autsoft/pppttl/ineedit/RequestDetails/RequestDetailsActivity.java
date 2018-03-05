@@ -72,8 +72,8 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             finish();
         } else {
             toolbar.setTitle(request.getName());
-            urlView.setText(request.getLink());
-            priceView.setText(Integer.toString(request.getPrice()));
+            urlView.setText(request.getLink().length() > 0 ? request.getLink() : getString(R.string.n_a));
+            priceView.setText(request.getPrice() > 0 ? Integer.toString(request.getPrice()) : getString(R.string.n_a));
             statusView.setText(request.getStatus().toString());
         }
 
