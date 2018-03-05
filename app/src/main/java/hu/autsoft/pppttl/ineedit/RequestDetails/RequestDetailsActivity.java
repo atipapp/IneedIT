@@ -22,6 +22,8 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     TextView urlView;
     @BindView(R.id.detailsPrice)
     TextView priceView;
+    @BindView(R.id.detailsStatus)
+    TextView statusView;
 
     public static final String REQUEST_ID = "request_id";
 
@@ -72,6 +74,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             toolbar.setTitle(request.getName());
             urlView.setText(request.getLink());
             priceView.setText(Integer.toString(request.getPrice()));
+            statusView.setText(request.getStatus().toString());
         }
 
     }
