@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +28,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)
     RecyclerView recyclerView;
+    RequestRecyclerViewAdapter adapter;
 
     RequestsPresenter presenter;
 
@@ -36,7 +38,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
         setContentView(R.layout.activity_requests);
         setSupportActionBar(toolbar);
 
-        presenter = new RequestsPresenterImpl(this, new RequestsInteractorImpl());
+        presenter = new RequestsPresenterImpl(this);
 
         ButterKnife.bind(this);
         setupRecyclerView(recyclerView);
@@ -49,17 +51,21 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        ArrayList<Request> requests = new ArrayList<Request>();
-        requests.add(new Request("Request 1", Request.Status.ACCEPTED, "", 1000));
-        requests.add(new Request("Request 2", Request.Status.PENDING, "", 1000));
-        requests.add(new Request("Request 3", Request.Status.DENIED, "", 1000));
-
-        recyclerView.setAdapter(new RequestRecyclerViewAdapter(requests, RequestsActivity.this));
+        List<Request> requests = new ArrayList<>(presenter.getRequests());
+        adapter = new RequestRecyclerViewAdapter(requests, RequestsActivity.this);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void navigateToRequest() {
         startActivity(new Intent(this, RequestDetailsActivity.class));
+    }
+
+    @Override
+    public void onRequestDataChanged(List<Request> requests) {
+        if (adapter != null) {
+            adapter.updateRequests(requests);
+        }
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Request {
     private Status status;
     private String link;
     private int price;
+    private String userID;
 
     public enum Status{
         PENDING,
@@ -35,6 +36,7 @@ public class Request {
         status = request.getStatus();
         link = request.getLink();
         price = request.getPrice();
+        userID = request.getUserID();
     }
 
     public String getName() {
@@ -67,5 +69,13 @@ public class Request {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 }

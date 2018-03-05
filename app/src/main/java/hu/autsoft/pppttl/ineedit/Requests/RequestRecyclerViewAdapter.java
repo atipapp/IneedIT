@@ -1,7 +1,5 @@
 package hu.autsoft.pppttl.ineedit.Requests;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
-import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
 
 /**
  * Created by pppttl on 2018. 02. 26..
@@ -54,15 +51,13 @@ public class RequestRecyclerViewAdapter
 
     }
 
-    public void deleteRow(int position) {
-        requests.remove(position);
+
+    public void updateRequests(List<Request> newRequests) {
+        requests.clear();
+        requests.addAll(newRequests);
         notifyDataSetChanged();
     }
 
-
-    public void addItem(Request aRequest) {
-        requests.add(aRequest);
-    }
 
     @Override
     public int getItemCount() {
