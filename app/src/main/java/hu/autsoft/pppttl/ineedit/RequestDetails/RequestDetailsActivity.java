@@ -32,6 +32,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
+        ButterKnife.bind(this);
 
         requestID = getIntent().getStringExtra(REQUEST_ID);
         presenter = new RequestDetailsPresenterImpl(this, requestID);
@@ -43,8 +44,6 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        ButterKnife.bind(this);
     }
 
     @OnClick(R.id.fabRequestDetails)
