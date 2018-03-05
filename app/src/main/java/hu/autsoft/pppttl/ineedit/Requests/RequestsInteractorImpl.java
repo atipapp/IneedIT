@@ -2,8 +2,14 @@ package hu.autsoft.pppttl.ineedit.Requests;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 
@@ -14,29 +20,60 @@ import hu.autsoft.pppttl.ineedit.Model.Request;
 public class RequestsInteractorImpl implements RequestsInteractor {
     private static final String CHILD_NAME = "requests";
 
-    class FirebaseRequest extends Request {
-        private FirebaseUser user = null;
+    private final RequestsPresenter presenter;
 
-        public FirebaseRequest(Request request) {
-            super(request);
-            user = FirebaseAuth.getInstance().getCurrentUser();
-        }
+    private List<Request> requests = new ArrayList<>();
+    private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    ;
 
-        public FirebaseUser getUser() {
-            return user;
-        }
+    public RequestsInteractorImpl(RequestsPresenter newPresenter) {
+        this.presenter = newPresenter;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference();
 
-        public void setUser(FirebaseUser user) {
-            this.user = user;
-        }
+        databaseReference.child(CHILD_NAME).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> newRequests = dataSnapshot.getChildren();
+                requests.clear();
+                for (DataSnapshot child : newRequests) {
+                    Request request = child.getValue(Request.class);
+                    requests.add(request);
+                }
+
+                presenter.onRequestDataChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
 
     @Override
     public void saveRequest(Request request) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
-        FirebaseRequest firebaseRequest = new FirebaseRequest(request);
-        databaseReference.child(CHILD_NAME).push().setValue(firebaseRequest);
+        request.setUserID(currentUser.getUid());
+        databaseReference.child(CHILD_NAME).push().setValue(request);
+    }
+
+    @Override
+    public List<Request> getRequests() {
+        List<Request> currUserRequests = new ArrayList<>();
+
+        if (currentUser != null) {
+            for (Request request : this.requests) {
+                if (request.getUserID().equals(currentUser.getUid())) {
+                    currUserRequests.add(request);
+                }
+
+            }
+        }
+
+        return currUserRequests;
     }
 }

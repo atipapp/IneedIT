@@ -1,5 +1,7 @@
 package hu.autsoft.pppttl.ineedit.Requests;
 
+import java.util.List;
+
 import hu.autsoft.pppttl.ineedit.Model.Request;
 
 /**
@@ -10,13 +12,23 @@ public class RequestsPresenterImpl implements RequestsPresenter {
     RequestsView view;
     RequestsInteractor interactor;
 
-    public RequestsPresenterImpl(RequestsView view, RequestsInteractor interactor) {
+    public RequestsPresenterImpl(RequestsView view) {
         this.view = view;
-        this.interactor = interactor;
+        this.interactor = new RequestsInteractorImpl(this);
     }
 
     @Override
     public void saveRequest(Request request) {
         interactor.saveRequest(request);
+    }
+
+    @Override
+    public List<Request> getRequests() {
+        return interactor.getRequests();
+    }
+
+    @Override
+    public void onRequestDataChanged() {
+        view.onRequestDataChanged(interactor.getRequests());
     }
 }

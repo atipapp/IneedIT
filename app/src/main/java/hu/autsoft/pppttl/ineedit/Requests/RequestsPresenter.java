@@ -1,5 +1,7 @@
 package hu.autsoft.pppttl.ineedit.Requests;
 
+import java.util.List;
+
 import hu.autsoft.pppttl.ineedit.Model.Request;
 
 /**
@@ -8,4 +10,8 @@ import hu.autsoft.pppttl.ineedit.Model.Request;
 
 public interface RequestsPresenter {
     void saveRequest(Request request);
+
+    List<Request> getRequests();
+
+    void onRequestDataChanged();
 }
