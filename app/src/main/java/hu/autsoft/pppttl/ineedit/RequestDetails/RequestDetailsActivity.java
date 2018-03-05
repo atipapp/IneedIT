@@ -36,7 +36,7 @@ public class RequestDetailsActivity extends AppCompatActivity {
     @OnClick(R.id.fabRequestDetails)
     public void fabClick(View view) {
         RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
-        dialog.show(view, getString(R.string.edit_request));
+        dialog.show(view, getString(R.string.edit_request), null); //TODO
     }
 
 

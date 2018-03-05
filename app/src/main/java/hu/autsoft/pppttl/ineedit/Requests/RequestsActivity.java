@@ -22,28 +22,30 @@ import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class RequestsActivity extends AppCompatActivity implements RequestsView{
+public class RequestsActivity extends AppCompatActivity implements RequestsView, SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)
     RecyclerView recyclerView;
 
+    RequestsPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
-
         setSupportActionBar(toolbar);
 
-        ButterKnife.bind(this);
+        presenter = new RequestsPresenterImpl(this, new RequestsInteractorImpl());
 
+        ButterKnife.bind(this);
         setupRecyclerView(recyclerView);
     }
 
     @OnClick(R.id.fabRequests)
     public void fabClick(View view) {
         RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
-        dialog.show(view, getString(R.string.create_request));
+        dialog.show(view, getString(R.string.create_request), this);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -58,5 +60,10 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView{
     @Override
     public void navigateToRequest() {
         startActivity(new Intent(this, RequestDetailsActivity.class));
+    }
+
+    @Override
+    public void onRequestSave(Request request) {
+        presenter.saveRequest(request);
     }
 }
