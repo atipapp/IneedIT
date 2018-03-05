@@ -9,7 +9,7 @@ import hu.autsoft.pppttl.ineedit.Model.Request;
  */
 
 public interface RequestsView {
-    void navigateToRequest();
+    void navigateToRequest(String requestID);
 
     void onRequestDataChanged(List<Request> requests);
 }

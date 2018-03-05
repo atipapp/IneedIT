@@ -18,7 +18,7 @@ import hu.autsoft.pppttl.ineedit.Model.Request;
  */
 
 public class RequestsInteractorImpl implements RequestsInteractor {
-    private static final String CHILD_NAME = "requests";
+    public static final String CHILD_NAME = "requests";
 
     private final RequestsPresenter presenter;
 
@@ -38,6 +38,7 @@ public class RequestsInteractorImpl implements RequestsInteractor {
                 requests.clear();
                 for (DataSnapshot child : newRequests) {
                     Request request = child.getValue(Request.class);
+                    request.setRequestID(child.getKey());
                     requests.add(request);
                 }
 

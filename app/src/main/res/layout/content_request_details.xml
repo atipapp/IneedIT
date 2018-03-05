@@ -29,6 +29,7 @@
                 android:text="URL"/>
 
             <TextView
+                android:id="@+id/detailsURL"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_height="wrap_content"
@@ -54,6 +55,7 @@
                 android:text="Price" />
 
             <TextView
+                android:id="@+id/detailsPrice"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_height="wrap_content"

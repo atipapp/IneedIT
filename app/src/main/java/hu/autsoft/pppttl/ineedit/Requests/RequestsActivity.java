@@ -57,8 +57,10 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     }
 
     @Override
-    public void navigateToRequest() {
-        startActivity(new Intent(this, RequestDetailsActivity.class));
+    public void navigateToRequest(String requestID) {
+        Intent intent = new Intent(this, RequestDetailsActivity.class);
+        intent.putExtra(RequestDetailsActivity.REQUEST_ID, requestID);
+        startActivity(intent);
     }
 
     @Override
