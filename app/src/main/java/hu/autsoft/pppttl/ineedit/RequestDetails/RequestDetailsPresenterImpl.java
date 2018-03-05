@@ -15,6 +15,12 @@ public class RequestDetailsPresenterImpl implements RequestDetailsPresenter {
         this.interactor = new RequestDetailsInteractorImpl(this, requestID);
     }
 
+    public RequestDetailsPresenterImpl(RequestDetailsView view, RequestDetailsInteractor interactor) {
+        //Only for testing
+        this.view = view;
+        this.interactor = interactor;
+    }
+
     public Request getRequest() {
         return interactor.getRequest();
     }
