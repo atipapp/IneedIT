@@ -17,6 +17,12 @@ public class RequestsPresenterImpl implements RequestsPresenter {
         this.interactor = new RequestsInteractorImpl(this);
     }
 
+    public RequestsPresenterImpl(RequestsView view, RequestsInteractor interactor) {
+        //Only for unit tests
+        this.view = view;
+        this.interactor = interactor;
+    }
+
     @Override
     public void saveRequest(Request request) {
         interactor.saveRequest(request);
