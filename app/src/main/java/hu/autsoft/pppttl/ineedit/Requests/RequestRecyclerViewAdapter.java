@@ -45,10 +45,9 @@ public class RequestRecyclerViewAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.navigateToRequest();
+                activity.navigateToRequest(holder.mRequest.getRequestID());
             }
         });
-
     }
 
 

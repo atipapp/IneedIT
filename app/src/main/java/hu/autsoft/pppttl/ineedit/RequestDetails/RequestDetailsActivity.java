@@ -6,21 +6,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
 
-public class RequestDetailsActivity extends AppCompatActivity {
+public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.detailsURL)
+    TextView urlView;
+    @BindView(R.id.detailsPrice)
+    TextView priceView;
+
+    public static final String REQUEST_ID = "request_id";
+
+    String requestID;
+    RequestDetailsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
+
+        requestID = getIntent().getStringExtra(REQUEST_ID);
+        presenter = new RequestDetailsPresenterImpl(this, requestID);
 
         setSupportActionBar(toolbar);
 
@@ -48,5 +62,18 @@ public class RequestDetailsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateUI() {
+        Request request = presenter.getRequest();
+        if (request == null) {
+            finish();
+        } else {
+            toolbar.setTitle(request.getName());
+            urlView.setText(request.getLink());
+            priceView.setText(Integer.toString(request.getPrice()));
+        }
+
     }
 }
