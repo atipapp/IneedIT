@@ -30,6 +30,13 @@ public class Request {
         this.price = 0;
     }
 
+    public Request(Request request) {
+        name = request.getName();
+        status = request.getStatus();
+        link = request.getLink();
+        price = request.getPrice();
+    }
+
     public String getName() {
         return name;
     }
