@@ -26,9 +26,11 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     TextView statusView;
 
     public static final String REQUEST_ID = "request_id";
+    private static final String REQUEST_NAME = "request_name";
 
     String requestID;
     RequestDetailsPresenter presenter;
+    Request request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,12 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateUI();
     }
 
     @OnClick(R.id.fabRequestDetails)
@@ -67,11 +75,13 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
 
     @Override
     public void updateUI() {
-        Request request = presenter.getRequest();
+        request = presenter.getRequest();
         if (request == null) {
             finish();
         } else {
-            toolbar.setTitle(request.getName());
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle(request.getName());
+
             urlView.setText(request.getLink().length() > 0 ? request.getLink() : getString(R.string.n_a));
             priceView.setText(request.getPrice() > 0 ? Integer.toString(request.getPrice()) : getString(R.string.n_a));
             statusView.setText(request.getStatus().toString());
