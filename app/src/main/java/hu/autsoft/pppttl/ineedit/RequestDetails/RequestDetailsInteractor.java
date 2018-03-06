@@ -9,4 +9,6 @@ import hu.autsoft.pppttl.ineedit.Model.Request;
 public interface RequestDetailsInteractor {
 
     Request getRequest();
+
+    void updateRequest(Request request);
 }

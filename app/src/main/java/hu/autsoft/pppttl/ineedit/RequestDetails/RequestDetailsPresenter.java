@@ -11,4 +11,6 @@ public interface RequestDetailsPresenter {
     Request getRequest();
 
     void updateUI();
+
+    void updateRequest(Request request);
 }

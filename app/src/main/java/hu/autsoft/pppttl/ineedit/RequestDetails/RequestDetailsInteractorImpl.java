@@ -18,6 +18,8 @@ public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
     private RequestDetailsPresenter presenter;
 
     public RequestDetailsInteractorImpl(final RequestDetailsPresenter presenter, String requestID) {
+        this.presenter = presenter;
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
@@ -25,6 +27,7 @@ public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 request = dataSnapshot.getValue(Request.class);
+                request.setRequestID(dataSnapshot.getKey());
                 presenter.updateUI();
             }
 
@@ -38,5 +41,15 @@ public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
     @Override
     public Request getRequest() {
         return request;
+    }
+
+    @Override
+    public void updateRequest(Request newRequest) {
+        request = newRequest;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference();
+
+        databaseReference.child(RequestsInteractorImpl.CHILD_NAME).child(request.getRequestID()).setValue(request);
+        presenter.updateUI();
     }
 }

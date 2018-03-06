@@ -29,4 +29,9 @@ public class RequestDetailsPresenterImpl implements RequestDetailsPresenter {
     public void updateUI() {
         view.updateUI();
     }
+
+    @Override
+    public void updateRequest(Request request) {
+        interactor.updateRequest(request);
+    }
 }

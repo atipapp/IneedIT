@@ -14,8 +14,9 @@ import butterknife.OnClick;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
+import hu.autsoft.pppttl.ineedit.Requests.SaveRequestCallbackListener;
 
-public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView {
+public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView, SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.detailsURL)
@@ -59,7 +60,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     @OnClick(R.id.fabRequestDetails)
     public void fabClick(View view) {
         RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
-        dialog.show(view, getString(R.string.edit_request), null); //TODO
+        dialog.show(view, getString(R.string.edit_request), this, request);
     }
 
 
@@ -87,5 +88,10 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             statusView.setText(request.getStatus().toString());
         }
 
+    }
+
+    @Override
+    public void onRequestSave(Request request) {
+        presenter.updateRequest(request);
     }
 }
