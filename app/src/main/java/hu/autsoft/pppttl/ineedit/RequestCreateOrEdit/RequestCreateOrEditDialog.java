@@ -19,7 +19,7 @@ import hu.autsoft.pppttl.ineedit.Requests.SaveRequestCallbackListener;
 
 public class RequestCreateOrEditDialog {
 
-    public void show(View view, String title, final SaveRequestCallbackListener listener) {
+    public void show(View view, String title, final SaveRequestCallbackListener listener, final Request request) {
         boolean wrapInScrollView = true;
         final MaterialDialog addDialog = new MaterialDialog.Builder(view.getContext())
                 .title(title)
@@ -36,7 +36,17 @@ public class RequestCreateOrEditDialog {
                         String priceString = ((TextInputEditText) view.findViewById(R.id.requestPrice)).getText().toString();
                         int price = priceString.length() > 0 ? Integer.parseInt(priceString) : 0;
 
-                        listener.onRequestSave(new Request(name, Request.Status.PENDING, link, price));
+                        if (request == null) {
+                            Request newRequest = new Request(name, Request.Status.PENDING, link, price);
+                            listener.onRequestSave(newRequest);
+                        } else {
+                            request.setName(name);
+                            request.setLink(link);
+                            request.setPrice(price);
+                            listener.onRequestSave(request);
+                        }
+
+
                     }
                 })
                 .show();
@@ -63,5 +73,15 @@ public class RequestCreateOrEditDialog {
                 }
             }
         });
+
+        if (request != null) {
+            View dialogView = addDialog.getView();
+            TextInputEditText urlEditText = dialogView.findViewById(R.id.requestUrl);
+            TextInputEditText priceEditText = dialogView.findViewById(R.id.requestPrice);
+
+            nameEditText.setText(request.getName());
+            urlEditText.setText(request.getLink());
+            priceEditText.setText(Integer.toString(request.getPrice()));
+        }
     }
 }

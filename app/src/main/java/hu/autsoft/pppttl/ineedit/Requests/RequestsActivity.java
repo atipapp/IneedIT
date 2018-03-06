@@ -47,7 +47,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     @OnClick(R.id.fabRequests)
     public void fabClick(View view) {
         RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
-        dialog.show(view, getString(R.string.create_request), this);
+        dialog.show(view, getString(R.string.create_request), this, null);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
