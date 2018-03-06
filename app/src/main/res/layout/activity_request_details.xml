@@ -35,6 +35,8 @@
 
     <include layout="@layout/content_request_details" />
 
+    <include layout="@layout/comments_request_details" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabRequestDetails"
         android:layout_width="wrap_content"
