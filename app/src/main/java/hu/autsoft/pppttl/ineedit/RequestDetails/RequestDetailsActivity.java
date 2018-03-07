@@ -93,9 +93,6 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
         List<Comment> comments = request == null ? new ArrayList<Comment>() : new ArrayList<>(request.getComments());
         adapter = new CommentRecyclerViewAdapter(comments);
 
-        adapter.addComment(new Comment("aa", "Teszt komment"));
-        adapter.addComment(new Comment("aa", "Teszt komment"));
-        adapter.addComment(new Comment("aa", "Teszt komment"));
         recyclerView.setAdapter(adapter);
     }
 
