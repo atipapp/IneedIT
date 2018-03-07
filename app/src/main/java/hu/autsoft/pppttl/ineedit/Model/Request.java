@@ -1,5 +1,8 @@
 package hu.autsoft.pppttl.ineedit.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by pppttl on 2018. 02. 26..
  */
@@ -11,6 +14,7 @@ public class Request {
     private int price;
     private String userID;
     private String requestID;
+    private List<Comment> comments;
 
     public enum Status{
         PENDING,
@@ -23,6 +27,7 @@ public class Request {
         this.status = status;
         this.link = link;
         this.price = price;
+        this.comments = new ArrayList<>();
     }
 
     public Request() {
@@ -30,6 +35,7 @@ public class Request {
         this.status=Status.PENDING;
         this.link = "";
         this.price = 0;
+        this.comments = new ArrayList<>();
     }
 
     public Request(Request request) {
@@ -39,6 +45,7 @@ public class Request {
         price = request.getPrice();
         userID = request.getUserID();
         requestID = request.getRequestID();
+        this.comments = request.getComments();
     }
 
     public String getName() {
@@ -87,5 +94,17 @@ public class Request {
 
     public void setRequestID(String requestID) {
         this.requestID = requestID;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
     }
 }

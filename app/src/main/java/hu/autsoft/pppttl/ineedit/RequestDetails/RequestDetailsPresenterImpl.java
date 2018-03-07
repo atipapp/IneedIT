@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit.RequestDetails;
 
+import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 
 /**
@@ -33,5 +34,15 @@ public class RequestDetailsPresenterImpl implements RequestDetailsPresenter {
     @Override
     public void updateRequest(Request request) {
         interactor.updateRequest(request);
+    }
+
+    @Override
+    public String getUserID() {
+        return interactor.getUserID();
+    }
+
+    @Override
+    public void sendComment(Comment comment) {
+        interactor.sendComment(comment);
     }
 }

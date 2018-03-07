@@ -1,16 +1,24 @@
 package hu.autsoft.pppttl.ineedit.RequestDetails;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
@@ -25,6 +33,12 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     TextView priceView;
     @BindView(R.id.detailsStatus)
     TextView statusView;
+    @BindView(R.id.edittext_chatbox)
+    EditText chatbox;
+    @BindView(R.id.button_chatbox_send)
+    Button sendButton;
+    @BindView(R.id.reyclerview_message_list)
+    RecyclerView recyclerView;
 
     public static final String REQUEST_ID = "request_id";
     private static final String REQUEST_NAME = "request_name";
@@ -32,6 +46,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     String requestID;
     RequestDetailsPresenter presenter;
     Request request;
+    CommentRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +64,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        setupRecyclerView(recyclerView);
     }
 
     @Override
@@ -61,6 +77,22 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     public void fabClick(View view) {
         RequestCreateOrEditDialog dialog = new RequestCreateOrEditDialog();
         dialog.show(view, getString(R.string.edit_request), this, request);
+    }
+
+    @OnClick(R.id.button_chatbox_send)
+    public void sendClick() {
+        String userID = presenter.getUserID();
+        String message = chatbox.getText().toString();
+        Comment comment = new Comment(userID, message);
+
+        presenter.sendComment(comment);
+        chatbox.setText("");
+    }
+
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        List<Comment> comments = request == null ? new ArrayList<Comment>() : new ArrayList<>(request.getComments());
+        adapter = new CommentRecyclerViewAdapter(comments);
+        recyclerView.setAdapter(adapter);
     }
 
 
@@ -86,6 +118,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             urlView.setText(request.getLink().length() > 0 ? request.getLink() : getString(R.string.n_a));
             priceView.setText(request.getPrice() > 0 ? Integer.toString(request.getPrice()) : getString(R.string.n_a));
             statusView.setText(request.getStatus().toString());
+            adapter.updateComments(request.getComments());
         }
 
     }

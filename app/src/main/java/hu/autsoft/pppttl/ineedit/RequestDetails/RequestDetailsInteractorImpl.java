@@ -1,11 +1,13 @@
 package hu.autsoft.pppttl.ineedit.RequestDetails;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsInteractorImpl;
 
@@ -46,6 +48,21 @@ public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
     @Override
     public void updateRequest(Request newRequest) {
         request = newRequest;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference();
+
+        databaseReference.child(RequestsInteractorImpl.CHILD_NAME).child(request.getRequestID()).setValue(request);
+        presenter.updateUI();
+    }
+
+    @Override
+    public String getUserID() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
+
+    @Override
+    public void sendComment(Comment comment) {
+        request.addComment(comment);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
