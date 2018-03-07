@@ -18,4 +18,6 @@ public interface RequestDetailsPresenter {
     String getUserID();
 
     void sendComment(Comment comment);
+
+    void closeUI();
 }

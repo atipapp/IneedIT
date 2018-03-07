@@ -29,6 +29,10 @@ public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 request = dataSnapshot.getValue(Request.class);
+                if (request == null) {
+                    presenter.closeUI();
+                    return;
+                }
                 request.setRequestID(dataSnapshot.getKey());
                 presenter.updateUI();
             }

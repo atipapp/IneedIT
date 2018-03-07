@@ -125,6 +125,11 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     }
 
     @Override
+    public void closeUI() {
+        finish();
+    }
+
+    @Override
     public void onRequestSave(Request request) {
         presenter.updateRequest(request);
     }
