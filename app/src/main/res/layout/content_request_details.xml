@@ -94,17 +94,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
-
             android:textSize="20sp"
             android:text="@string/comments"/>
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reyclerview_message_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="No comments to show"/>
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/row_comment"
+            android:paddingLeft="16dp"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

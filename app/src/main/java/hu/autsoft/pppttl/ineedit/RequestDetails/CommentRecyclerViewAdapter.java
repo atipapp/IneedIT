@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -53,9 +52,14 @@ public class CommentRecyclerViewAdapter
         notifyDataSetChanged();
     }
 
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final ImageView profile;
+        //public final ImageView profile;
         public final TextView name;
         public final TextView comment;
         public final TextView time;
@@ -65,7 +69,7 @@ public class CommentRecyclerViewAdapter
             super(view);
             mView = view;
             name = (TextView) view.findViewById(R.id.text_message_name);
-            profile = (ImageView) view.findViewById(R.id.image_message_profile);
+            //profile = (ImageView) view.findViewById(R.id.image_message_profile);
             comment = (TextView) view.findViewById(R.id.text_message_body);
             time = (TextView) view.findViewById(R.id.text_message_time);
 
