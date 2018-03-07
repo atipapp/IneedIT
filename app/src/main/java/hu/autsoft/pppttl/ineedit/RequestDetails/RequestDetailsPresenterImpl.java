@@ -45,4 +45,9 @@ public class RequestDetailsPresenterImpl implements RequestDetailsPresenter {
     public void sendComment(Comment comment) {
         interactor.sendComment(comment);
     }
+
+    @Override
+    public void closeUI() {
+        view.closeUI();
+    }
 }

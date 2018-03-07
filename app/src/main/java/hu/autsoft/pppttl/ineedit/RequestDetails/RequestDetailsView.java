@@ -7,4 +7,6 @@ package hu.autsoft.pppttl.ineedit.RequestDetails;
 public interface RequestDetailsView {
 
     void updateUI();
+
+    void closeUI();
 }
