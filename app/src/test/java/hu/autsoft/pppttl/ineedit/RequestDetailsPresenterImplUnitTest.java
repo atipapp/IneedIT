@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsInteractor;
 import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsPresenterImpl;
@@ -26,6 +27,9 @@ public class RequestDetailsPresenterImplUnitTest {
 
     @Mock
     Request request;
+
+    @Mock
+    Comment comment;
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
@@ -52,5 +56,13 @@ public class RequestDetailsPresenterImplUnitTest {
         presenter.updateRequest(request);
 
         verify(interactor).updateRequest(request);
+    }
+
+    @Test
+    public void sendCommentTest() {
+        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
+        presenter.sendComment(comment);
+
+        verify(interactor).sendComment(comment);
     }
 }
