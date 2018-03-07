@@ -65,4 +65,12 @@ public class RequestDetailsPresenterImplUnitTest {
 
         verify(interactor).sendComment(comment);
     }
+
+    @Test
+    public void closeUITest() {
+        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
+        presenter.closeUI();
+
+        verify(view).closeUI();
+    }
 }
