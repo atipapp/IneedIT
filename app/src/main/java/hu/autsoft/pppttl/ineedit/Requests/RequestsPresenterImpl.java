@@ -3,13 +3,13 @@ package hu.autsoft.pppttl.ineedit.Requests;
 import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
-import hu.autsoft.pppttl.ineedit.mvp.Presenter;
+import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
 
 /**
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestsPresenterImpl extends Presenter<RequestsView, RequestsInteractor>
+public class RequestsPresenterImpl extends BasePresenter<RequestsView, RequestsInteractor>
         implements RequestsPresenter {
 
     public RequestsPresenterImpl(RequestsView view) {
