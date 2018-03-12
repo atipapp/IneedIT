@@ -11,7 +11,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
-import hu.autsoft.pppttl.ineedit.Requests.RequestsView;
 
 /**
  * Created by pppttl on 2018. 02. 27..
@@ -19,7 +18,7 @@ import hu.autsoft.pppttl.ineedit.Requests.RequestsView;
 
 public class RequestCreateOrEditDialog {
 
-    public void show(View view, String title, final RequestsView.SaveRequestCallbackListener listener, final Request request) {
+    public void show(View view, String title, final SaveRequestCallbackListener listener, final Request request) {
         boolean wrapInScrollView = true;
         final MaterialDialog addDialog = new MaterialDialog.Builder(view.getContext())
                 .title(title)
