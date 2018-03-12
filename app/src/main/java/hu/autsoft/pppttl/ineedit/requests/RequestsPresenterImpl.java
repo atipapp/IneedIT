@@ -9,15 +9,15 @@ import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestsPresenterImpl extends BasePresenter<RequestsView, RequestsInteractor>
-        implements RequestsPresenter {
+public class RequestsPresenterImpl extends BasePresenter<RequestsContract.RequestsView, RequestsContract.RequestsInteractor>
+        implements RequestsContract.RequestsPresenter {
 
-    public RequestsPresenterImpl(RequestsView view) {
+    public RequestsPresenterImpl(RequestsContract.RequestsView view) {
         attachView(view);
         attachInteractor(new RequestsInteractorImpl(this));
     }
 
-    public RequestsPresenterImpl(RequestsView view, RequestsInteractor interactor) {
+    public RequestsPresenterImpl(RequestsContract.RequestsView view, RequestsContract.RequestsInteractor interactor) {
         //Only for unit tests
         this.view = view;
         this.interactor = interactor;

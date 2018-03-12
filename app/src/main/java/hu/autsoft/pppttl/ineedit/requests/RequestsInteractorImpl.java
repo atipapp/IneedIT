@@ -17,16 +17,16 @@ import hu.autsoft.pppttl.ineedit.model.Request;
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestsInteractorImpl implements RequestsInteractor {
+public class RequestsInteractorImpl implements RequestsContract.RequestsInteractor {
     public static final String CHILD_NAME = "requests";
 
-    private final RequestsPresenter presenter;
+    private final RequestsContract.RequestsPresenter presenter;
 
     private List<Request> requests = new ArrayList<>();
     private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     ;
 
-    public RequestsInteractorImpl(RequestsPresenter newPresenter) {
+    public RequestsInteractorImpl(RequestsContract.RequestsPresenter newPresenter) {
         this.presenter = newPresenter;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();

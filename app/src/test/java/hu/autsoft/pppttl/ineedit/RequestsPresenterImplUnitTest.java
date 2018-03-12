@@ -9,9 +9,8 @@ import org.mockito.junit.MockitoRule;
 import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.model.Request;
-import hu.autsoft.pppttl.ineedit.requests.RequestsInteractor;
+import hu.autsoft.pppttl.ineedit.requests.RequestsContract;
 import hu.autsoft.pppttl.ineedit.requests.RequestsPresenterImpl;
-import hu.autsoft.pppttl.ineedit.requests.RequestsView;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -22,10 +21,10 @@ import static org.mockito.Mockito.when;
 
 public class RequestsPresenterImplUnitTest {
     @Mock
-    RequestsView view;
+    RequestsContract.RequestsView view;
 
     @Mock
-    RequestsInteractor interactor;
+    RequestsContract.RequestsInteractor interactor;
 
     @Mock
     Request request;
