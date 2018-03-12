@@ -22,9 +22,9 @@ import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
-import hu.autsoft.pppttl.ineedit.Requests.SaveRequestCallbackListener;
+import hu.autsoft.pppttl.ineedit.Requests.RequestsView;
 
-public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView, SaveRequestCallbackListener {
+public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView, RequestsView.SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.detailsURL)
