@@ -15,4 +15,9 @@ public class RequestDetailsModule {
         String requestID = view.getSelectedRequestId();
         return new RequestDetailsPresenterImpl(view, requestID);
     }
+
+    @Provides
+    CommentRecyclerViewAdapter provideCommentRecyclerViewAdapter() {
+        return new CommentRecyclerViewAdapter();
+    }
 }
