@@ -1,54 +1,55 @@
 package hu.autsoft.pppttl.ineedit.Login;
 
+import hu.autsoft.pppttl.ineedit.mvp.Presenter;
+
 /**
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
-    private LoginView loginView;
-    private LoginInteractor loginInteractor;
+public class LoginPresenterImpl extends Presenter<LoginView, LoginInteractor>
+        implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
 
-    public LoginPresenterImpl(LoginView loginView, LoginInteractor loginInteractor) {
-        this.loginView = loginView;
-        this.loginInteractor = loginInteractor;
+    public LoginPresenterImpl(LoginView view, LoginInteractor interactor) {
+        attachView(view);
+        attachInteractor(interactor);
     }
 
     @Override public void validateCredentials(String username, String password) {
-        if (loginView != null) {
-            loginView.showProgress();
+        if (view != null) {
+            view.showProgress();
         }
 
-        loginInteractor.login(username, password, this);
+        interactor.login(username, password, this);
     }
 
     @Override
     public void autoLogin() {
-        if (loginInteractor.isLoggedIn()){
-            loginView.navigateToHome();
+        if (interactor.isLoggedIn()) {
+            view.navigateToHome();
         }
     }
 
     @Override public void onDestroy() {
-        loginView = null;
+        view = null;
     }
 
     @Override public void onUsernameError() {
-        if (loginView != null) {
-            loginView.setUsernameError();
-            loginView.hideProgress();
+        if (view != null) {
+            view.setUsernameError();
+            view.hideProgress();
         }
     }
 
     @Override public void onPasswordError() {
-        if (loginView != null) {
-            loginView.setPasswordError();
-            loginView.hideProgress();
+        if (view != null) {
+            view.setPasswordError();
+            view.hideProgress();
         }
     }
 
     @Override public void onSuccess() {
-        if (loginView != null) {
-            loginView.navigateToHome();
+        if (view != null) {
+            view.navigateToHome();
         }
     }
 }
