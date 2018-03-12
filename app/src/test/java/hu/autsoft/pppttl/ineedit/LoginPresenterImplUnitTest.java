@@ -6,9 +6,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import hu.autsoft.pppttl.ineedit.Login.LoginInteractor;
-import hu.autsoft.pppttl.ineedit.Login.LoginPresenterImpl;
-import hu.autsoft.pppttl.ineedit.Login.LoginView;
+import hu.autsoft.pppttl.ineedit.login.LoginInteractor;
+import hu.autsoft.pppttl.ineedit.login.LoginPresenterImpl;
+import hu.autsoft.pppttl.ineedit.login.LoginView;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

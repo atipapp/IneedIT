@@ -6,11 +6,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import hu.autsoft.pppttl.ineedit.Model.Comment;
-import hu.autsoft.pppttl.ineedit.Model.Request;
-import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsInteractor;
-import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsPresenterImpl;
-import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsView;
+import hu.autsoft.pppttl.ineedit.model.Comment;
+import hu.autsoft.pppttl.ineedit.model.Request;
+import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsInteractor;
+import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsPresenterImpl;
+import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsView;
 
 import static org.mockito.Mockito.verify;
 
