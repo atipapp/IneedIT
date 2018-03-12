@@ -9,9 +9,9 @@ import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
 public class LoginPresenterImpl extends BasePresenter<LoginView, LoginInteractor>
         implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
 
-    public LoginPresenterImpl(LoginView view, LoginInteractor interactor) {
+    public LoginPresenterImpl(LoginView view) {
         attachView(view);
-        attachInteractor(interactor);
+        attachInteractor(new LoginInteractorImpl());
     }
 
     @Override public void validateCredentials(String username, String password) {

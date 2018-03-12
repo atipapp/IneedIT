@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsActivity;
 
@@ -25,13 +28,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.password)
     EditText password;
 
-    private LoginPresenter presenter;
+    @Inject
+    LoginPresenter presenter;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        presenter = new LoginPresenterImpl(this,new LoginInteractorImpl());
         ButterKnife.bind(this);
     }
 
