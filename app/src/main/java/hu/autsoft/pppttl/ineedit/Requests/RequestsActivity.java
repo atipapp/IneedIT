@@ -26,7 +26,7 @@ import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class RequestsActivity extends AppCompatActivity implements RequestsView, SaveRequestCallbackListener {
+public class RequestsActivity extends AppCompatActivity implements RequestsView, RequestsView.SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)

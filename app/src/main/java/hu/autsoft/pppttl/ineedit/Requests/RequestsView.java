@@ -12,4 +12,9 @@ public interface RequestsView {
     void navigateToRequest(String requestID);
 
     void onRequestDataChanged(List<Request> requests);
+
+
+    interface SaveRequestCallbackListener {
+        void onRequestSave(Request request);
+    }
 }
