@@ -1,12 +1,12 @@
 package hu.autsoft.pppttl.ineedit.Login;
 
-import hu.autsoft.pppttl.ineedit.mvp.Presenter;
+import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
 
 /**
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginPresenterImpl extends Presenter<LoginView, LoginInteractor>
+public class LoginPresenterImpl extends BasePresenter<LoginView, LoginInteractor>
         implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
 
     public LoginPresenterImpl(LoginView view, LoginInteractor interactor) {

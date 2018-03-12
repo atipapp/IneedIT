@@ -4,7 +4,7 @@ package hu.autsoft.pppttl.ineedit.mvp;
  * Created by pppttl on 2018. 03. 12..
  */
 
-public abstract class Presenter<V, I> {
+public abstract class BasePresenter<V, I> {
     protected V view;
     protected I interactor;
 
