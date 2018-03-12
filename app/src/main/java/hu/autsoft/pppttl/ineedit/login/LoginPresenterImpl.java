@@ -14,6 +14,12 @@ public class LoginPresenterImpl extends BasePresenter<LoginContract.LoginView, L
         attachInteractor(new LoginInteractorImpl());
     }
 
+    public LoginPresenterImpl(LoginContract.LoginView view, LoginContract.LoginInteractor interactor) {
+        //Only for testing
+        attachView(view);
+        attachInteractor(interactor);
+    }
+
     @Override public void validateCredentials(String username, String password) {
         if (view != null) {
             view.showProgress();
