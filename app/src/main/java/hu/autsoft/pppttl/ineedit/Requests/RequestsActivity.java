@@ -11,9 +11,12 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
@@ -30,15 +33,15 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     RecyclerView recyclerView;
     RequestRecyclerViewAdapter adapter;
 
+    @Inject
     RequestsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
         setSupportActionBar(toolbar);
-
-        presenter = new RequestsPresenterImpl(this);
 
         ButterKnife.bind(this);
         setupRecyclerView(recyclerView);
