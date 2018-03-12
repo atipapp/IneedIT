@@ -20,13 +20,14 @@ import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.RequestCreateOrEditDialog;
+import hu.autsoft.pppttl.ineedit.RequestCreateOrEdit.SaveRequestCallbackListener;
 import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
 
 /**
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class RequestsActivity extends AppCompatActivity implements RequestsView, RequestsView.SaveRequestCallbackListener {
+public class RequestsActivity extends AppCompatActivity implements RequestsView, SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)
