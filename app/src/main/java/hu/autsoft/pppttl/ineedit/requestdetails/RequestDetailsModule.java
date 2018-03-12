@@ -11,7 +11,7 @@ import dagger.Provides;
 public class RequestDetailsModule {
 
     @Provides
-    RequestDetailsPresenter provideRequestDetailsPresenter(RequestDetailsView view) {
+    RequestDetailsContract.RequestDetailsPresenter provideRequestDetailsPresenter(RequestDetailsContract.RequestDetailsView view) {
         String requestID = view.getSelectedRequestId();
         return new RequestDetailsPresenterImpl(view, requestID);
     }

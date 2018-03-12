@@ -10,5 +10,5 @@ import dagger.Module;
 @Module
 public abstract class RequestDetailsViewModule {
     @Binds
-    abstract RequestDetailsView provideRequestDetailsView(RequestDetailsActivity requestDetailsActivity);
+    abstract RequestDetailsContract.RequestDetailsView provideRequestDetailsView(RequestDetailsActivity requestDetailsActivity);
 }
