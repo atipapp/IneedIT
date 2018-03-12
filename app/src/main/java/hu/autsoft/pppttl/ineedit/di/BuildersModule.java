@@ -14,5 +14,5 @@ import hu.autsoft.pppttl.ineedit.Requests.RequestsViewModule;
 public abstract class BuildersModule {
 
     @ContributesAndroidInjector(modules = {RequestsViewModule.class, RequestsModule.class})
-    abstract RequestsActivity bindLobbyActivity();
+    abstract RequestsActivity bindRequestsActivity();
 }
