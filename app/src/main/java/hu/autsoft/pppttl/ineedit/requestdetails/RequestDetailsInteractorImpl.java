@@ -15,11 +15,11 @@ import hu.autsoft.pppttl.ineedit.requests.RequestsInteractorImpl;
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestDetailsInteractorImpl implements RequestDetailsInteractor {
+public class RequestDetailsInteractorImpl implements RequestDetailsContract.RequestDetailsInteractor {
     private Request request = new Request();
-    private RequestDetailsPresenter presenter;
+    private RequestDetailsContract.RequestDetailsPresenter presenter;
 
-    public RequestDetailsInteractorImpl(final RequestDetailsPresenter presenter, String requestID) {
+    public RequestDetailsInteractorImpl(final RequestDetailsContract.RequestDetailsPresenter presenter, String requestID) {
         this.presenter = presenter;
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

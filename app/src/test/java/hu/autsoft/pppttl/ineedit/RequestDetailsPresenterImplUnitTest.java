@@ -8,9 +8,8 @@ import org.mockito.junit.MockitoRule;
 
 import hu.autsoft.pppttl.ineedit.model.Comment;
 import hu.autsoft.pppttl.ineedit.model.Request;
-import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsInteractor;
+import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsContract;
 import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsPresenterImpl;
-import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsView;
 
 import static org.mockito.Mockito.verify;
 
@@ -20,10 +19,10 @@ import static org.mockito.Mockito.verify;
 
 public class RequestDetailsPresenterImplUnitTest {
     @Mock
-    RequestDetailsInteractor interactor;
+    RequestDetailsContract.RequestDetailsInteractor interactor;
 
     @Mock
-    RequestDetailsView view;
+    RequestDetailsContract.RequestDetailsView view;
 
     @Mock
     Request request;

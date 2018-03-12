@@ -27,7 +27,7 @@ import hu.autsoft.pppttl.ineedit.model.Request;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.RequestCreateOrEditDialog;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.SaveRequestCallbackListener;
 
-public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsView, SaveRequestCallbackListener {
+public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsContract.RequestDetailsView, SaveRequestCallbackListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.detailsURL)
@@ -44,7 +44,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     RecyclerView recyclerView;
 
     @Inject
-    RequestDetailsPresenter presenter;
+    RequestDetailsContract.RequestDetailsPresenter presenter;
     @Inject
     CommentRecyclerViewAdapter adapter;
 
