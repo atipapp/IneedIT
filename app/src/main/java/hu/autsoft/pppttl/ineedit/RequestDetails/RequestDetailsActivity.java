@@ -45,13 +45,14 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
 
     @Inject
     RequestDetailsPresenter presenter;
+    @Inject
+    CommentRecyclerViewAdapter adapter;
 
     public static final String REQUEST_ID = "request_id";
     private static final String REQUEST_NAME = "request_name";
 
     String requestID;
     Request request;
-    CommentRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +96,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Comment> comments = request == null ? new ArrayList<Comment>() : new ArrayList<>(request.getComments());
-        adapter = new CommentRecyclerViewAdapter(comments);
-
+        adapter.updateComments(comments);
         recyclerView.setAdapter(adapter);
     }
 

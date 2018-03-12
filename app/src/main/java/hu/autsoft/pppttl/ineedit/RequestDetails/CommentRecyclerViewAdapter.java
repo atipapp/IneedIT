@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Comment;
@@ -21,8 +22,8 @@ public class CommentRecyclerViewAdapter
 
     private final List<Comment> comments;
 
-    public CommentRecyclerViewAdapter(List<Comment> messageList) {
-        comments = messageList;
+    public CommentRecyclerViewAdapter() {
+        comments = new ArrayList<>();
     }
 
     @Override
