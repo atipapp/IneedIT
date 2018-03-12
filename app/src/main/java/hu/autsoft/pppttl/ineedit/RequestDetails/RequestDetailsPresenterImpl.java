@@ -2,18 +2,18 @@ package hu.autsoft.pppttl.ineedit.RequestDetails;
 
 import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
+import hu.autsoft.pppttl.ineedit.mvp.Presenter;
 
 /**
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestDetailsPresenterImpl implements RequestDetailsPresenter {
-    RequestDetailsView view;
-    RequestDetailsInteractor interactor;
+public class RequestDetailsPresenterImpl extends Presenter<RequestDetailsView, RequestDetailsInteractor>
+        implements RequestDetailsPresenter {
 
     public RequestDetailsPresenterImpl(RequestDetailsView view, String requestID) {
-        this.view = view;
-        this.interactor = new RequestDetailsInteractorImpl(this, requestID);
+        attachView(view);
+        attachInteractor(new RequestDetailsInteractorImpl(this, requestID));
     }
 
     public RequestDetailsPresenterImpl(RequestDetailsView view, RequestDetailsInteractor interactor) {
