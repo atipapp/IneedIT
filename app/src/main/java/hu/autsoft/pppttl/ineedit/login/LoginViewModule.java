@@ -11,5 +11,5 @@ import dagger.Module;
 @Module
 public abstract class LoginViewModule {
     @Binds
-    abstract LoginView provideLoginView(LoginActivity loginActivity);
+    abstract LoginContract.LoginView provideLoginView(LoginActivity loginActivity);
 }

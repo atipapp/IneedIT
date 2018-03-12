@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginInteractorImpl implements LoginInteractor {
+public class LoginInteractorImpl implements LoginContract.LoginInteractor {
     private static final String TAG = "LoginInteractorImpl";
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 

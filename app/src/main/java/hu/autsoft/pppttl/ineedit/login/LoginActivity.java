@@ -20,7 +20,7 @@ import hu.autsoft.pppttl.ineedit.requests.RequestsActivity;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
     @BindView(R.id.progress)
     ProgressBar progressBar;
     @BindView(R.id.username)
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     EditText password;
 
     @Inject
-    LoginPresenter presenter;
+    LoginContract.LoginPresenter presenter;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
