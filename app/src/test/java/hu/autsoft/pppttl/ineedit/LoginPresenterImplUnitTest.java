@@ -6,9 +6,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import hu.autsoft.pppttl.ineedit.login.LoginInteractor;
+import hu.autsoft.pppttl.ineedit.login.LoginContract;
 import hu.autsoft.pppttl.ineedit.login.LoginPresenterImpl;
-import hu.autsoft.pppttl.ineedit.login.LoginView;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -19,9 +18,9 @@ import static org.mockito.Mockito.when;
 
 public class LoginPresenterImplUnitTest {
     @Mock
-    LoginView loginView;
+    LoginContract.LoginView loginView;
     @Mock
-    LoginInteractor loginInteractor;
+    LoginContract.LoginInteractor loginInteractor;
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();

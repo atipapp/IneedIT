@@ -6,10 +6,10 @@ import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
  * Created by pppttl on 2018. 02. 26..
  */
 
-public class LoginPresenterImpl extends BasePresenter<LoginView, LoginInteractor>
-        implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
+public class LoginPresenterImpl extends BasePresenter<LoginContract.LoginView, LoginContract.LoginInteractor>
+        implements LoginContract.LoginPresenter, LoginContract.LoginInteractor.OnLoginFinishedListener {
 
-    public LoginPresenterImpl(LoginView view) {
+    public LoginPresenterImpl(LoginContract.LoginView view) {
         attachView(view);
         attachInteractor(new LoginInteractorImpl());
     }
