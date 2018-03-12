@@ -19,11 +19,11 @@ import hu.autsoft.pppttl.ineedit.model.Request;
 public class RequestRecyclerViewAdapter
         extends RecyclerView.Adapter<RequestRecyclerViewAdapter.ViewHolder> {
 
-    private RequestsView activity;
+    private RequestsContract.RequestsView activity;
 
     private final List<Request> requests;
 
-    public RequestRecyclerViewAdapter(RequestsView activity) {
+    public RequestRecyclerViewAdapter(RequestsContract.RequestsView activity) {
         this.requests = new ArrayList<>();
         this.activity = activity;
     }
