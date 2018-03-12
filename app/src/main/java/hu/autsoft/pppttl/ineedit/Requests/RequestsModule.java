@@ -13,4 +13,9 @@ public class RequestsModule {
     RequestsPresenter provideRequestsPresenter(RequestsView view) {
         return new RequestsPresenterImpl(view);
     }
+
+    @Provides
+    RequestRecyclerViewAdapter provideRequestsRecyclerViewAdapter(RequestsView view) {
+        return new RequestRecyclerViewAdapter(view);
+    }
 }

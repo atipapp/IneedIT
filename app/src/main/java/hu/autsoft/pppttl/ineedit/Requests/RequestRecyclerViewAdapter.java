@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.Model.Request;
@@ -22,8 +23,8 @@ public class RequestRecyclerViewAdapter
 
     private final List<Request> requests;
 
-    public RequestRecyclerViewAdapter(List<Request> requests, RequestsView activity) {
-        this.requests = requests;
+    public RequestRecyclerViewAdapter(RequestsView activity) {
+        this.requests = new ArrayList<>();
         this.activity = activity;
     }
 

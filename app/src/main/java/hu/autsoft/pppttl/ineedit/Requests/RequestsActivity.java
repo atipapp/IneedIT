@@ -31,6 +31,8 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)
     RecyclerView recyclerView;
+
+    @Inject
     RequestRecyclerViewAdapter adapter;
 
     @Inject
@@ -55,7 +57,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsView,
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Request> requests = new ArrayList<>(presenter.getRequests());
-        adapter = new RequestRecyclerViewAdapter(requests, RequestsActivity.this);
+        adapter.updateRequests(requests);
         recyclerView.setAdapter(adapter);
     }
 
