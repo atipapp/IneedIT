@@ -37,6 +37,22 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+
+    project.ext {
+        supportLibraryVersion = "25.2.0"
+        daggerVersion = "2.11"
+    }
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    compile "com.google.dagger:dagger:$project.daggerVersion"
+
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$project.daggerVersion"
+    // if you are not using support library, include this instead
+    compile "com.google.dagger:dagger-android:$project.daggerVersion"
 }
 
 
