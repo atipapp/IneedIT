@@ -15,9 +15,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.Model.Comment;
 import hu.autsoft.pppttl.ineedit.Model.Request;
 import hu.autsoft.pppttl.ineedit.R;
@@ -40,22 +43,23 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     @BindView(R.id.reyclerview_message_list)
     RecyclerView recyclerView;
 
+    @Inject
+    RequestDetailsPresenter presenter;
+
     public static final String REQUEST_ID = "request_id";
     private static final String REQUEST_NAME = "request_name";
 
     String requestID;
-    RequestDetailsPresenter presenter;
     Request request;
     CommentRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestID = getIntent().getStringExtra(REQUEST_ID);
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
         ButterKnife.bind(this);
-
-        requestID = getIntent().getStringExtra(REQUEST_ID);
-        presenter = new RequestDetailsPresenterImpl(this, requestID);
 
         setSupportActionBar(toolbar);
 
@@ -127,6 +131,11 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     @Override
     public void closeUI() {
         finish();
+    }
+
+    @Override
+    public String getSelectedRequestId() {
+        return requestID;
     }
 
     @Override

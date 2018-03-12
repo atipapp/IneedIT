@@ -9,4 +9,6 @@ public interface RequestDetailsView {
     void updateUI();
 
     void closeUI();
+
+    String getSelectedRequestId();
 }

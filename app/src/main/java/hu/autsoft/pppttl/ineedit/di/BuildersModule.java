@@ -2,6 +2,9 @@ package hu.autsoft.pppttl.ineedit.di;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
+import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsActivity;
+import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsModule;
+import hu.autsoft.pppttl.ineedit.RequestDetails.RequestDetailsViewModule;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsActivity;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsModule;
 import hu.autsoft.pppttl.ineedit.Requests.RequestsViewModule;
@@ -15,4 +18,7 @@ public abstract class BuildersModule {
 
     @ContributesAndroidInjector(modules = {RequestsViewModule.class, RequestsModule.class})
     abstract RequestsActivity bindRequestsActivity();
+
+    @ContributesAndroidInjector(modules = {RequestDetailsViewModule.class, RequestDetailsModule.class})
+    abstract RequestDetailsActivity bindRequestDetailsActivity();
 }
