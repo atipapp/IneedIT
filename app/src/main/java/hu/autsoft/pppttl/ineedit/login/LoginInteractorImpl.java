@@ -34,8 +34,6 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             listener.onUsernameError();
                         }
-
-                        // ...
                     }
                 });
     }
