@@ -24,7 +24,6 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
 
     private List<Request> requests = new ArrayList<>();
     private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    ;
 
     public RequestsInteractorImpl(RequestsContract.RequestsPresenter newPresenter) {
         this.presenter = newPresenter;
@@ -76,5 +75,15 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
         }
 
         return currUserRequests;
+    }
+
+    @Override
+    public String getCurrentUsername() {
+        return currentUser.getDisplayName();
+    }
+
+    @Override
+    public String getCurrentUserEmail() {
+        return currentUser.getEmail();
     }
 }

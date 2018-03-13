@@ -14,6 +14,10 @@ public interface RequestsContract {
         void saveRequest(Request request);
 
         List<Request> getRequests();
+
+        String getCurrentUsername();
+
+        String getCurrentUserEmail();
     }
 
     interface RequestsPresenter {
@@ -22,6 +26,10 @@ public interface RequestsContract {
         List<Request> getRequests();
 
         void onRequestDataChanged();
+
+        String getCurrentUsername();
+
+        String getCurrentUserEmail();
     }
 
     interface RequestsView {

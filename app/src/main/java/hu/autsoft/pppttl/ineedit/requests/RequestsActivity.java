@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,8 +78,16 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        TextView email = header.findViewById(R.id.currEmail);
+        TextView username = header.findViewById(R.id.currUsername);
+        email.setText(presenter.getCurrentUserEmail());
+        String usernameString = presenter.getCurrentUsername();
+        username.setText(usernameString.length() > 0 ? usernameString : "No displayname given");
     }
 
     @Override

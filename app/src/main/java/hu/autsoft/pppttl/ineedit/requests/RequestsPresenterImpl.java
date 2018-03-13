@@ -37,4 +37,14 @@ public class RequestsPresenterImpl extends BasePresenter<RequestsContract.Reques
     public void onRequestDataChanged() {
         view.onRequestDataChanged(interactor.getRequests());
     }
+
+    @Override
+    public String getCurrentUsername() {
+        return interactor.getCurrentUsername();
+    }
+
+    @Override
+    public String getCurrentUserEmail() {
+        return interactor.getCurrentUserEmail();
+    }
 }
