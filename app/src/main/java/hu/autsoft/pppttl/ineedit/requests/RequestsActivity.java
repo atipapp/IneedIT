@@ -37,6 +37,10 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
     Toolbar toolbar;
     @BindView(R.id.recyclerViewRequests)
     RecyclerView recyclerView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
 
     @Inject
     RequestRecyclerViewAdapter adapter;
@@ -51,17 +55,8 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         setContentView(R.layout.activity_requests);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
         setupRecyclerView(recyclerView);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        setupDrawerLayout();
     }
 
     @OnClick(R.id.fabRequests)
@@ -74,6 +69,16 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         List<Request> requests = new ArrayList<>(presenter.getRequests());
         adapter.updateRequests(requests);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setupDrawerLayout() {
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -115,14 +120,12 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
