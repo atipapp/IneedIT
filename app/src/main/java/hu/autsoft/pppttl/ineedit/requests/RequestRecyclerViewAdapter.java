@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,6 +48,20 @@ public class RequestRecyclerViewAdapter
         holder.name.setText(filteredRequests.get(position).getName());
         holder.status.setText(filteredRequests.get(position).getStatus().toString());
 
+        switch (holder.mRequest.getStatus()) {
+            case ACCEPTED:
+                holder.statusImage.setBackgroundResource(R.drawable.ic_requests_accepted);
+                break;
+            case PENDING:
+                holder.statusImage.setBackgroundResource(R.drawable.ic_requests_pending);
+                break;
+            case DENIED:
+                holder.statusImage.setBackgroundResource(R.drawable.ic_requests_denied);
+                break;
+            default:
+                holder.statusImage.setBackgroundResource(R.drawable.ic_requests_all);
+                break;
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +105,14 @@ public class RequestRecyclerViewAdapter
         public final TextView name;
         public final TextView status;
         public Request mRequest;
+        public ImageView statusImage;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            name = (TextView) view.findViewById(R.id.textViewRequestName);
-            status = (TextView) view.findViewById(R.id.textViewRequestStatus);
+            name = view.findViewById(R.id.textViewRequestName);
+            status = view.findViewById(R.id.textViewRequestStatus);
+            statusImage = view.findViewById(R.id.imageViewType);
         }
     }
 }
