@@ -21,10 +21,15 @@ public class RequestRecyclerViewAdapter
 
     private RequestsContract.RequestsView activity;
 
-    private final List<Request> requests;
+    private final List<Request> allRequests;
+    private final List<Request> filteredRequests;
+
+    private Request.Status selectedFilter;
 
     public RequestRecyclerViewAdapter(RequestsContract.RequestsView activity) {
-        this.requests = new ArrayList<>();
+        this.allRequests = new ArrayList<>();
+        this.filteredRequests = new ArrayList<>();
+        selectedFilter = null;
         this.activity = activity;
     }
 
@@ -38,9 +43,9 @@ public class RequestRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.mRequest = requests.get(position);
-        holder.name.setText(requests.get(position).getName());
-        holder.status.setText(requests.get(position).getStatus().toString());
+        holder.mRequest = filteredRequests.get(position);
+        holder.name.setText(filteredRequests.get(position).getName());
+        holder.status.setText(filteredRequests.get(position).getStatus().toString());
 
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -53,15 +58,31 @@ public class RequestRecyclerViewAdapter
 
 
     public void updateRequests(List<Request> newRequests) {
-        requests.clear();
-        requests.addAll(newRequests);
+        allRequests.clear();
+        allRequests.addAll(newRequests);
+
+        filterRequests(selectedFilter);
+    }
+
+    public void filterRequests(Request.Status newStatus) {
+        //newStatus = null -> all requests selected
+        selectedFilter = newStatus;
+        filteredRequests.clear();
+        if (selectedFilter == null) {
+            filteredRequests.addAll(allRequests);
+        } else {
+            for (Request req : allRequests) {
+                if (req.getStatus().equals(selectedFilter)) {
+                    filteredRequests.add(req);
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 
-
     @Override
     public int getItemCount() {
-        return requests.size();
+        return filteredRequests.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

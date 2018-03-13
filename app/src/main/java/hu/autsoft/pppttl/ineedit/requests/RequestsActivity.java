@@ -124,15 +124,16 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
 
         } else if (id == R.id.nav_all_requests) {
             setTitle(getString(R.string.activity_all_requests));
-
+            adapter.filterRequests(null);
         } else if (id == R.id.nav_pending_requests) {
             setTitle(getString(R.string.activity_pending_requests));
-
+            adapter.filterRequests(Request.Status.PENDING);
         } else if (id == R.id.nav_accepted_requests) {
             setTitle(getString(R.string.activity_accepted_requests));
-
+            adapter.filterRequests(Request.Status.ACCEPTED);
         } else if (id == R.id.nav_denied_requests) {
             setTitle(getString(R.string.activity_denied_requests));
+            adapter.filterRequests(Request.Status.DENIED);
         }
 
         drawer.closeDrawer(GravityCompat.START);
