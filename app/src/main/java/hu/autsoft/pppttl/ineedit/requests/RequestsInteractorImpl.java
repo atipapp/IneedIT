@@ -20,13 +20,12 @@ import hu.autsoft.pppttl.ineedit.model.Request;
 public class RequestsInteractorImpl implements RequestsContract.RequestsInteractor {
     public static final String CHILD_NAME = "requests";
 
-    private final RequestsContract.RequestsPresenter presenter;
+    private RequestsContract.RequestsPresenter presenter;
 
     private List<Request> requests = new ArrayList<>();
     private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-    public RequestsInteractorImpl(RequestsContract.RequestsPresenter newPresenter) {
-        this.presenter = newPresenter;
+    private void subscribeToRequests() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
@@ -41,12 +40,11 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
                     requests.add(request);
                 }
 
-                presenter.onRequestDataChanged();
+                if (presenter != null) presenter.onRequestDataChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
@@ -70,7 +68,6 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
                 if (request.getUserID().equals(currentUser.getUid())) {
                     currUserRequests.add(request);
                 }
-
             }
         }
 
@@ -85,5 +82,11 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
     @Override
     public String getCurrentUserEmail() {
         return currentUser.getEmail();
+    }
+
+    @Override
+    public void setPresenter(RequestsContract.RequestsPresenter presenter) {
+        this.presenter = presenter;
+        subscribeToRequests();
     }
 }

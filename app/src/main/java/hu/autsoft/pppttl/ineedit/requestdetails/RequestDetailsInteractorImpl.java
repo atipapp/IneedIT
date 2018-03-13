@@ -19,9 +19,7 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
     private Request request = new Request();
     private RequestDetailsContract.RequestDetailsPresenter presenter;
 
-    public RequestDetailsInteractorImpl(final RequestDetailsContract.RequestDetailsPresenter presenter, String requestID) {
-        this.presenter = presenter;
-
+    private void subscribeToRequest(String requestID) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
@@ -30,16 +28,15 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
             public void onDataChange(DataSnapshot dataSnapshot) {
                 request = dataSnapshot.getValue(Request.class);
                 if (request == null) {
-                    presenter.closeUI();
+                    if (presenter != null) presenter.closeUI();
                     return;
                 }
                 request.setRequestID(dataSnapshot.getKey());
-                presenter.updateUI();
+                if (presenter != null) presenter.updateUI();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
@@ -56,7 +53,7 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
         DatabaseReference databaseReference = database.getReference();
 
         databaseReference.child(RequestsInteractorImpl.CHILD_NAME).child(request.getRequestID()).setValue(request);
-        presenter.updateUI();
+        if (presenter != null) presenter.updateUI();
     }
 
     @Override
@@ -71,6 +68,12 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
         DatabaseReference databaseReference = database.getReference();
 
         databaseReference.child(RequestsInteractorImpl.CHILD_NAME).child(request.getRequestID()).setValue(request);
-        presenter.updateUI();
+        if (presenter != null) presenter.updateUI();
+    }
+
+    @Override
+    public void setPresenter(RequestDetailsContract.RequestDetailsPresenter presenter) {
+        this.presenter = presenter;
+        subscribeToRequest(presenter.getSelectedRequestId());
     }
 }

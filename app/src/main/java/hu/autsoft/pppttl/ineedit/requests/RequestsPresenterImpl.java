@@ -2,6 +2,8 @@ package hu.autsoft.pppttl.ineedit.requests;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import hu.autsoft.pppttl.ineedit.model.Request;
 import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
 
@@ -9,18 +11,16 @@ import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestsPresenterImpl extends BasePresenter<RequestsContract.RequestsView, RequestsContract.RequestsInteractor>
+public class RequestsPresenterImpl extends BasePresenter<RequestsContract.RequestsView>
         implements RequestsContract.RequestsPresenter {
 
-    public RequestsPresenterImpl(RequestsContract.RequestsView view) {
-        attachView(view);
-        attachInteractor(new RequestsInteractorImpl(this));
-    }
+    @Inject
+    RequestsContract.RequestsInteractor interactor;
 
     public RequestsPresenterImpl(RequestsContract.RequestsView view, RequestsContract.RequestsInteractor interactor) {
-        //Only for unit tests
         this.view = view;
         this.interactor = interactor;
+        interactor.setPresenter(this);
     }
 
     @Override

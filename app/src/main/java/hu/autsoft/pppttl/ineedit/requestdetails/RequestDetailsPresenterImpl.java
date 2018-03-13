@@ -1,5 +1,7 @@
 package hu.autsoft.pppttl.ineedit.requestdetails;
 
+import javax.inject.Inject;
+
 import hu.autsoft.pppttl.ineedit.model.Comment;
 import hu.autsoft.pppttl.ineedit.model.Request;
 import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
@@ -8,18 +10,16 @@ import hu.autsoft.pppttl.ineedit.mvp.BasePresenter;
  * Created by pppttl on 2018. 03. 05..
  */
 
-public class RequestDetailsPresenterImpl extends BasePresenter<RequestDetailsContract.RequestDetailsView, RequestDetailsContract.RequestDetailsInteractor>
+public class RequestDetailsPresenterImpl extends BasePresenter<RequestDetailsContract.RequestDetailsView>
         implements RequestDetailsContract.RequestDetailsPresenter {
 
-    public RequestDetailsPresenterImpl(RequestDetailsContract.RequestDetailsView view, String requestID) {
-        attachView(view);
-        attachInteractor(new RequestDetailsInteractorImpl(this, requestID));
-    }
+    @Inject
+    RequestDetailsContract.RequestDetailsInteractor interactor;
 
     public RequestDetailsPresenterImpl(RequestDetailsContract.RequestDetailsView view, RequestDetailsContract.RequestDetailsInteractor interactor) {
-        //Only for testing
         this.view = view;
         this.interactor = interactor;
+        interactor.setPresenter(this);
     }
 
     public Request getRequest() {
@@ -49,5 +49,10 @@ public class RequestDetailsPresenterImpl extends BasePresenter<RequestDetailsCon
     @Override
     public void closeUI() {
         view.closeUI();
+    }
+
+    @Override
+    public String getSelectedRequestId() {
+        return view.getSelectedRequestId();
     }
 }

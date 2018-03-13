@@ -11,13 +11,17 @@ import dagger.Provides;
 public class RequestDetailsModule {
 
     @Provides
-    RequestDetailsContract.RequestDetailsPresenter provideRequestDetailsPresenter(RequestDetailsContract.RequestDetailsView view) {
-        String requestID = view.getSelectedRequestId();
-        return new RequestDetailsPresenterImpl(view, requestID);
+    RequestDetailsContract.RequestDetailsPresenter provideRequestDetailsPresenter(RequestDetailsContract.RequestDetailsView view, RequestDetailsContract.RequestDetailsInteractor interactor) {
+        return new RequestDetailsPresenterImpl(view, interactor);
     }
 
     @Provides
     CommentRecyclerViewAdapter provideCommentRecyclerViewAdapter() {
         return new CommentRecyclerViewAdapter();
+    }
+
+    @Provides
+    RequestDetailsContract.RequestDetailsInteractor provideRequestDetailsInteractor() {
+        return new RequestDetailsInteractorImpl();
     }
 }

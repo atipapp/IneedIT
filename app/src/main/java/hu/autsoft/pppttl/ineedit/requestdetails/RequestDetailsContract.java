@@ -21,6 +21,8 @@ public interface RequestDetailsContract {
         String getUserID();
 
         void sendComment(Comment comment);
+
+        void setPresenter(RequestDetailsPresenter presenter);
     }
 
     interface RequestDetailsPresenter {
@@ -36,6 +38,8 @@ public interface RequestDetailsContract {
         void sendComment(Comment comment);
 
         void closeUI();
+
+        String getSelectedRequestId();
     }
 
     interface RequestDetailsView {

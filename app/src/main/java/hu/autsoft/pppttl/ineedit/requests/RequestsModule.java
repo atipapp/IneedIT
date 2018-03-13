@@ -10,12 +10,17 @@ import dagger.Provides;
 @Module
 public class RequestsModule {
     @Provides
-    RequestsContract.RequestsPresenter provideRequestsPresenter(RequestsContract.RequestsView view) {
-        return new RequestsPresenterImpl(view);
+    RequestsContract.RequestsPresenter provideRequestsPresenter(RequestsContract.RequestsView view, RequestsContract.RequestsInteractor interactor) {
+        return new RequestsPresenterImpl(view, interactor);
     }
 
     @Provides
     RequestRecyclerViewAdapter provideRequestsRecyclerViewAdapter(RequestsContract.RequestsView view) {
         return new RequestRecyclerViewAdapter(view);
+    }
+
+    @Provides
+    RequestsContract.RequestsInteractor provideRequestsInteractor() {
+        return new RequestsInteractorImpl();
     }
 }

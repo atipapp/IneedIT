@@ -11,7 +11,12 @@ import dagger.Provides;
 public class LoginModule {
 
     @Provides
-    LoginContract.LoginPresenter provideLoginPresenter(LoginContract.LoginView view) {
-        return new LoginPresenterImpl(view);
+    LoginContract.LoginPresenter provideLoginPresenter(LoginContract.LoginView view, LoginContract.LoginInteractor interactor) {
+        return new LoginPresenterImpl(view, interactor);
+    }
+
+    @Provides
+    LoginContract.LoginInteractor provideLoginInteractor() {
+        return new LoginInteractorImpl();
     }
 }

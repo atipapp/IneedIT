@@ -18,6 +18,8 @@ public interface RequestsContract {
         String getCurrentUsername();
 
         String getCurrentUserEmail();
+
+        void setPresenter(RequestsPresenter presenter);
     }
 
     interface RequestsPresenter {
