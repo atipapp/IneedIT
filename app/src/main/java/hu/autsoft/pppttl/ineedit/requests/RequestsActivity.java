@@ -88,6 +88,9 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         email.setText(presenter.getCurrentUserEmail());
         String usernameString = presenter.getCurrentUsername();
         username.setText(usernameString.length() > 0 ? usernameString : "No displayname given");
+
+        navigationView.setCheckedItem(R.id.nav_all_requests);
+        setTitle(getString(R.string.activity_all_requests));
     }
 
     @Override
@@ -116,17 +119,20 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_all_requests) {
+            setTitle(getString(R.string.activity_all_requests));
 
         } else if (id == R.id.nav_pending_requests) {
+            setTitle(getString(R.string.activity_pending_requests));
 
         } else if (id == R.id.nav_accepted_requests) {
+            setTitle(getString(R.string.activity_accepted_requests));
 
         } else if (id == R.id.nav_denied_requests) {
-
+            setTitle(getString(R.string.activity_denied_requests));
         }
 
         drawer.closeDrawer(GravityCompat.START);

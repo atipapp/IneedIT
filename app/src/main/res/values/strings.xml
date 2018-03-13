@@ -21,4 +21,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="activity_all_requests">All requests</string>
+    <string name="activity_pending_requests">Pending requests</string>
+    <string name="activity_accepted_requests">Accepted requests</string>
+    <string name="activity_denied_requests">Denied requests</string>
 </resources>
