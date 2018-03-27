@@ -28,14 +28,14 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database:11.0.4'
     testImplementation 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.android.support:cardview-v7:26.1.+'
-    compile 'com.android.support:recyclerview-v7:26.+'
+    implementation 'com.android.support:cardview-v7:26.1.+'
+    implementation 'com.android.support:recyclerview-v7:26.+'
 
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 
@@ -46,13 +46,13 @@ dependencies {
 
     // Dagger core
     annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
-    compile "com.google.dagger:dagger:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
 
     // Dagger Android
     annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
     // if you are not using support library, include this instead
-    compile "com.google.dagger:dagger-android:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$project.daggerVersion"
 }
 
 
