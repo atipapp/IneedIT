@@ -1,6 +1,8 @@
 package hu.autsoft.pppttl.ineedit.requestdetails;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ public class CommentRecyclerViewAdapter
         extends RecyclerView.Adapter<CommentRecyclerViewAdapter.ViewHolder> {
 
     private final List<Comment> comments;
+    private Context context;
 
     public CommentRecyclerViewAdapter() {
         comments = new ArrayList<>();
@@ -38,7 +41,7 @@ public class CommentRecyclerViewAdapter
         holder.mComment = comments.get(position);
         holder.name.setText(comments.get(position).getUserEmail());
         holder.comment.setText(comments.get(position).getMessage());
-        holder.time.setText(comments.get(position).getCreatedAt() + "");
+        holder.time.setText(DateUtils.formatDateTime(context, comments.get(position).getCreatedAt(), DateUtils.FORMAT_ABBREV_ALL));
     }
 
 
@@ -47,7 +50,8 @@ public class CommentRecyclerViewAdapter
         return comments.size();
     }
 
-    public void updateComments(List<Comment> newComments) {
+    public void updateComments(Context context, List<Comment> newComments) {
+        this.context = context;
         comments.clear();
         comments.addAll(newComments);
         notifyDataSetChanged();
