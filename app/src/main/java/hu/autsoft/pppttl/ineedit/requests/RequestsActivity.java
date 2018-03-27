@@ -87,7 +87,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         TextView username = header.findViewById(R.id.currUsername);
         email.setText(presenter.getCurrentUserEmail());
         String usernameString = presenter.getCurrentUsername();
-        username.setText(usernameString.length() > 0 ? usernameString : "No displayname given");
+        username.setText(usernameString != null ? usernameString : "No displayname given");
 
         navigationView.setCheckedItem(R.id.nav_all_requests);
         setTitle(getString(R.string.activity_all_requests));
