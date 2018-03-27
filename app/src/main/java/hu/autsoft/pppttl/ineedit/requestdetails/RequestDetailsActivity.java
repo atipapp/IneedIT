@@ -86,9 +86,9 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
 
     @OnClick(R.id.button_chatbox_send)
     public void sendClick() {
-        String userID = presenter.getUserID();
+        String email = presenter.getUserEmail();
         String message = chatbox.getText().toString();
-        Comment comment = new Comment(userID, message);
+        Comment comment = new Comment(email, message);
 
         presenter.sendComment(comment);
         chatbox.setText("");

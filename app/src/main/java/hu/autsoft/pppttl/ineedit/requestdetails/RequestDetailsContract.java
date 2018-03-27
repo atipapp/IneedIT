@@ -18,7 +18,7 @@ public interface RequestDetailsContract {
 
         void updateRequest(Request request);
 
-        String getUserID();
+        String getUserEmail();
 
         void sendComment(Comment comment);
 
@@ -33,7 +33,7 @@ public interface RequestDetailsContract {
 
         void updateRequest(Request request);
 
-        String getUserID();
+        String getUserEmail();
 
         void sendComment(Comment comment);
 

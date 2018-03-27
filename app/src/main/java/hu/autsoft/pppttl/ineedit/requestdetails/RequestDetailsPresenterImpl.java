@@ -37,8 +37,8 @@ public class RequestDetailsPresenterImpl extends BasePresenter<RequestDetailsCon
     }
 
     @Override
-    public String getUserID() {
-        return interactor.getUserID();
+    public String getUserEmail() {
+        return interactor.getUserEmail();
     }
 
     @Override

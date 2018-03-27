@@ -7,7 +7,7 @@ import java.util.Calendar;
  */
 
 public class Comment {
-    private String userID;
+    private String userEmail;
     private String message;
     private long createdAt;
 
@@ -15,13 +15,13 @@ public class Comment {
     }
 
     public Comment(String userID, String message, long createdAt) {
-        this.userID = userID;
+        this.userEmail = userID;
         this.message = message;
         this.createdAt = createdAt;
     }
 
     public Comment(String userID, String message) {
-        this.userID = userID;
+        this.userEmail = userID;
         this.message = message;
 
         Calendar today = Calendar.getInstance();
@@ -29,12 +29,12 @@ public class Comment {
         this.createdAt = today.getTimeInMillis();
     }
 
-    public String getUserID() {
-        return userID;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getMessage() {
