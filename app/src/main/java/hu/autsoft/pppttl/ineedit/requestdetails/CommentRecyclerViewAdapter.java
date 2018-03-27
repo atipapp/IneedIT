@@ -36,7 +36,7 @@ public class CommentRecyclerViewAdapter
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mComment = comments.get(position);
-        holder.name.setText(comments.get(position).getUserID());
+        holder.name.setText(comments.get(position).getUserEmail());
         holder.comment.setText(comments.get(position).getMessage());
         holder.time.setText(comments.get(position).getCreatedAt() + "");
     }

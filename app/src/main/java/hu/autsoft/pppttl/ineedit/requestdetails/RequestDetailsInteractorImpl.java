@@ -57,8 +57,8 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
     }
 
     @Override
-    public String getUserID() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public String getUserEmail() {
+        return FirebaseAuth.getInstance().getCurrentUser().getEmail();
     }
 
     @Override
