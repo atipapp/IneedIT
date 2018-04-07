@@ -96,7 +96,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Comment> comments = request == null ? new ArrayList<Comment>() : new ArrayList<>(request.getComments());
-        adapter.updateComments(this.getApplicationContext(), comments);
+        adapter.updateComments(this.getApplicationContext(), comments, presenter.getUserEmail());
         recyclerView.setAdapter(adapter);
     }
 
@@ -123,7 +123,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             urlView.setText(request.getLink().length() > 0 ? request.getLink() : getString(R.string.n_a));
             priceView.setText(request.getPrice() > 0 ? Integer.toString(request.getPrice()) : getString(R.string.n_a));
             statusView.setText(request.getStatus().toString());
-            adapter.updateComments(this.getBaseContext(), request.getComments());
+            adapter.updateComments(this.getBaseContext(), request.getComments(), presenter.getUserEmail());
         }
 
     }
