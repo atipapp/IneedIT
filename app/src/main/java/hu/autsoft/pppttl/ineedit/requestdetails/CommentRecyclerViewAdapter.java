@@ -101,11 +101,9 @@ public class CommentRecyclerViewAdapter
 
     public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        //public final ImageView profile;
         public final TextView name;
         public final TextView comment;
         public final TextView time;
-        public Comment mComment;
 
         public ReceivedMessageHolder(View view) {
             super(view);
@@ -126,7 +124,6 @@ public class CommentRecyclerViewAdapter
         public final View mView;
         public final TextView comment;
         public final TextView time;
-        public Comment mComment;
 
         public SentMessageHolder(View view) {
             super(view);
