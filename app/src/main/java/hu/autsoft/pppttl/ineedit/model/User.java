@@ -13,6 +13,13 @@ public class User {
     private String fullName;
 
     public User() {
+        uID = "";
+        email = "n/a";
+        workEmail = "n/a";
+        phoneNumber = "n/a";
+        homeAddress = "n/a";
+        workAddress = "n/a";
+        fullName = "n/a";
     }
 
     public User(String uID, String email) {
