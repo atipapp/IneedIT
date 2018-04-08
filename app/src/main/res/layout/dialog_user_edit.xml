@@ -7,8 +7,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feel free to share only the data you would like others to know"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:text="@string/user_profile_privacy_message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="16dp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -43,7 +44,7 @@
             android:id="@+id/userWorkAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
+            android:inputType="text"
             android:hint="@string/user_work_adress" />
 
     </android.support.design.widget.TextInputLayout>
@@ -59,7 +60,7 @@
         android:id="@+id/userWorkEmailTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/userWorkEmail"
