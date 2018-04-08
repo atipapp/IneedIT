@@ -25,4 +25,6 @@
     <string name="activity_pending_requests">Pending requests</string>
     <string name="activity_accepted_requests">Accepted requests</string>
     <string name="activity_denied_requests">Denied requests</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>
