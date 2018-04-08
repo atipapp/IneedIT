@@ -47,4 +47,9 @@ public class RequestsPresenterImpl extends BasePresenter<RequestsContract.Reques
     public String getCurrentUserEmail() {
         return interactor.getCurrentUserEmail();
     }
+
+    @Override
+    public String getCurrentUID() {
+        return interactor.getCurrentUID();
+    }
 }

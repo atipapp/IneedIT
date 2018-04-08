@@ -20,6 +20,8 @@ public interface RequestsContract {
         String getCurrentUserEmail();
 
         void setPresenter(RequestsPresenter presenter);
+
+        String getCurrentUID();
     }
 
     interface RequestsPresenter {
@@ -32,6 +34,8 @@ public interface RequestsContract {
         String getCurrentUsername();
 
         String getCurrentUserEmail();
+
+        String getCurrentUID();
     }
 
     interface RequestsView {

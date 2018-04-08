@@ -5,6 +5,9 @@ import dagger.android.ContributesAndroidInjector;
 import hu.autsoft.pppttl.ineedit.login.LoginActivity;
 import hu.autsoft.pppttl.ineedit.login.LoginModule;
 import hu.autsoft.pppttl.ineedit.login.LoginViewModule;
+import hu.autsoft.pppttl.ineedit.profile.ProfileActivity;
+import hu.autsoft.pppttl.ineedit.profile.ProfileModule;
+import hu.autsoft.pppttl.ineedit.profile.ProfileViewModule;
 import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsActivity;
 import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsModule;
 import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsViewModule;
@@ -27,4 +30,7 @@ public abstract class BuildersModule {
 
     @ContributesAndroidInjector(modules = {LoginViewModule.class, LoginModule.class})
     abstract LoginActivity bindLoginActivity();
+
+    @ContributesAndroidInjector(modules = {ProfileViewModule.class, ProfileModule.class})
+    abstract ProfileActivity bindProfileActivity();
 }
