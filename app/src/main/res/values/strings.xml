@@ -27,4 +27,9 @@
     <string name="activity_denied_requests">Denied requests</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="user_full_name">Full name</string>
+    <string name="work_email_prompt">Set my work email to the same address I use for logging in (recommended)</string>
+    <string name="user_work_email">Work email</string>
+    <string name="user_phone_number">Phone number</string>
+    <string name="user_work_adress">Work address</string>
 </resources>
