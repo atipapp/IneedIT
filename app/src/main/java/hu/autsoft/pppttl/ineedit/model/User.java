@@ -11,6 +11,7 @@ public class User {
     private String homeAddress;
     private String workAddress;
     private String fullName;
+    private Boolean admin;
 
     public User() {
         uID = "";
@@ -20,11 +21,13 @@ public class User {
         homeAddress = "n/a";
         workAddress = "n/a";
         fullName = "n/a";
+        admin = false;
     }
 
     public User(String uID, String email) {
         this.uID = uID;
         this.email = email;
+        this.admin = false;
     }
 
     public String getuID() {
@@ -81,5 +84,9 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Boolean isAdmin() {
+        return admin;
     }
 }

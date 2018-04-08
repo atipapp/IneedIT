@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.autsoft.pppttl.ineedit.model.Request;
+import hu.autsoft.pppttl.ineedit.model.User;
+import hu.autsoft.pppttl.ineedit.profile.ProfileInteractorImpl;
 
 /**
  * Created by pppttl on 2018. 03. 05..
@@ -24,6 +26,7 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
 
     private List<Request> requests = new ArrayList<>();
     private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    private User userData;
 
     private void subscribeToRequests() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -47,6 +50,20 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        DatabaseReference userdb = databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(currentUser.getUid());
+        userdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userData = dataSnapshot.getValue(User.class);
+                if (presenter != null) presenter.onRequestDataChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -62,6 +79,10 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
     @Override
     public List<Request> getRequests() {
         List<Request> currUserRequests = new ArrayList<>();
+
+        if (userData != null && userData.isAdmin()) {
+            return requests;
+        }
 
         if (currentUser != null) {
             for (Request request : this.requests) {

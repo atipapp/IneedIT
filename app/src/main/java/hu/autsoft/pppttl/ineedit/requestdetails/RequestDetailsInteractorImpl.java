@@ -1,6 +1,7 @@
 package hu.autsoft.pppttl.ineedit.requestdetails;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -9,6 +10,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import hu.autsoft.pppttl.ineedit.model.Comment;
 import hu.autsoft.pppttl.ineedit.model.Request;
+import hu.autsoft.pppttl.ineedit.model.User;
+import hu.autsoft.pppttl.ineedit.profile.ProfileInteractorImpl;
 import hu.autsoft.pppttl.ineedit.requests.RequestsInteractorImpl;
 
 /**
@@ -18,6 +21,8 @@ import hu.autsoft.pppttl.ineedit.requests.RequestsInteractorImpl;
 public class RequestDetailsInteractorImpl implements RequestDetailsContract.RequestDetailsInteractor {
     private Request request = new Request();
     private RequestDetailsContract.RequestDetailsPresenter presenter;
+
+    private User userData;
 
     private void subscribeToRequest(String requestID) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -37,6 +42,21 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference userdb = databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(currentUser.getUid());
+        userdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userData = dataSnapshot.getValue(User.class);
+                if (presenter != null) presenter.updateUI();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
@@ -75,5 +95,10 @@ public class RequestDetailsInteractorImpl implements RequestDetailsContract.Requ
     public void setPresenter(RequestDetailsContract.RequestDetailsPresenter presenter) {
         this.presenter = presenter;
         subscribeToRequest(presenter.getSelectedRequestId());
+    }
+
+    public boolean isCurrentUserAdmin() {
+        if (userData != null) return userData.isAdmin();
+        return false;
     }
 }

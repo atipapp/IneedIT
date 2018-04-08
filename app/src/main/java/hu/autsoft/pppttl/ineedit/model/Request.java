@@ -107,4 +107,10 @@ public class Request {
     public void addComment(Comment comment) {
         comments.add(comment);
     }
+
+    public int getStatusID() {
+        if (status.equals(Status.ACCEPTED)) return 1;
+        if (status.equals(Status.DENIED)) return 2;
+        return 0;
+    }
 }
