@@ -7,9 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import hu.autsoft.pppttl.ineedit.R;
+import javax.inject.Inject;
 
-public class ProfileActivity extends AppCompatActivity {
+import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.model.User;
+
+public class ProfileActivity extends AppCompatActivity implements ProfileContract.ProfileView {
+    @Inject
+    ProfileContract.ProfilePresenter presenter;
+
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +34,17 @@ public class ProfileActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public void closeUI() {
+        finish();
+    }
+
+    @Override
+    public void updateUI() {
+        User currentUser = presenter.getUser(uid);
+
+
     }
 }
