@@ -55,4 +55,9 @@ public class RequestDetailsPresenterImpl extends BasePresenter<RequestDetailsCon
     public String getSelectedRequestId() {
         return view.getSelectedRequestId();
     }
+
+    @Override
+    public boolean isCurrentUserAdmin() {
+        return interactor.isCurrentUserAdmin();
+    }
 }

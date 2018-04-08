@@ -9,11 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,7 +32,7 @@ import hu.autsoft.pppttl.ineedit.model.Request;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.RequestCreateOrEditDialog;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.SaveRequestCallbackListener;
 
-public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsContract.RequestDetailsView, SaveRequestCallbackListener {
+public class RequestDetailsActivity extends AppCompatActivity implements RequestDetailsContract.RequestDetailsView, SaveRequestCallbackListener, AdapterView.OnItemSelectedListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.detailsURL)
@@ -43,6 +47,8 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     Button sendButton;
     @BindView(R.id.reyclerview_message_list)
     RecyclerView recyclerView;
+    @BindView(R.id.adminStatusSpinner)
+    Spinner adminStatusSpinner;
 
     @Inject
     RequestDetailsContract.RequestDetailsPresenter presenter;
@@ -63,6 +69,12 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
         setContentView(R.layout.activity_request_details);
         ButterKnife.bind(this);
 
+        adminStatusSpinner.setOnItemSelectedListener(this);
+        List<Request.Status> statuses = new ArrayList<>(Arrays.asList(Request.Status.values()));
+        ArrayAdapter<Request.Status> statusArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statuses);
+        statusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adminStatusSpinner.setAdapter(statusArrayAdapter);
+
         setSupportActionBar(toolbar);
 
         // Show the Up button in the action bar.
@@ -71,6 +83,17 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         setupRecyclerView(recyclerView);
+    }
+
+    private void updateAdmin() {
+        if (presenter.isCurrentUserAdmin()) {
+            adminStatusSpinner.setVisibility(View.VISIBLE);
+            adminStatusSpinner.setSelection(request.getStatusID());
+            statusView.setVisibility(View.GONE);
+        } else {
+            adminStatusSpinner.setVisibility(View.GONE);
+            statusView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -126,6 +149,8 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             priceView.setText(request.getPrice() > 0 ? Integer.toString(request.getPrice()) : getString(R.string.n_a));
             statusView.setText(request.getStatus().toString());
             adapter.updateComments(this.getBaseContext(), request.getComments(), presenter.getUserEmail());
+
+            updateAdmin();
         }
 
     }
@@ -143,5 +168,34 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     @Override
     public void onRequestSave(Request request) {
         presenter.updateRequest(request);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        //Note: Checking whether the status is update is crucial, because saving the request invokes this function, too.
+        switch (i) {
+            case 0:
+                if (!request.getStatus().equals(Request.Status.PENDING)) {
+                    request.setStatus(Request.Status.PENDING);
+                    onRequestSave(request);
+                }
+                break;
+            case 1:
+                if (!request.getStatus().equals(Request.Status.ACCEPTED)) {
+                    request.setStatus(Request.Status.ACCEPTED);
+                    onRequestSave(request);
+                }
+                break;
+            case 2:
+                if (!request.getStatus().equals(Request.Status.ACCEPTED)) {
+                    request.setStatus(Request.Status.ACCEPTED);
+                    onRequestSave(request);
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 }

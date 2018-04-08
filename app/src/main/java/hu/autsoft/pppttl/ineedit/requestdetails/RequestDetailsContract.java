@@ -23,6 +23,8 @@ public interface RequestDetailsContract {
         void sendComment(Comment comment);
 
         void setPresenter(RequestDetailsPresenter presenter);
+
+        boolean isCurrentUserAdmin();
     }
 
     interface RequestDetailsPresenter {
@@ -40,6 +42,8 @@ public interface RequestDetailsContract {
         void closeUI();
 
         String getSelectedRequestId();
+
+        boolean isCurrentUserAdmin();
     }
 
     interface RequestDetailsView {

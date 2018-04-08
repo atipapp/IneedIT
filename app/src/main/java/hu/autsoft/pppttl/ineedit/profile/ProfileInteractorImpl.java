@@ -12,7 +12,7 @@ import hu.autsoft.pppttl.ineedit.model.User;
  * Created by pppttl on 2018. 04. 08..
  */
 public class ProfileInteractorImpl implements ProfileContract.ProfileInteractor {
-    private static final String CHILD_NAME = "users";
+    public static final String CHILD_NAME = "users";
     private User currentUser;
 
     ProfileContract.ProfilePresenter presenter;
