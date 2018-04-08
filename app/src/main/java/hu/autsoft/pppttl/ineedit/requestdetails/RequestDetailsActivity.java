@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -95,6 +96,7 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Comment> comments = request == null ? new ArrayList<Comment>() : new ArrayList<>(request.getComments());
         adapter.updateComments(this.getApplicationContext(), comments, presenter.getUserEmail());
         recyclerView.setAdapter(adapter);

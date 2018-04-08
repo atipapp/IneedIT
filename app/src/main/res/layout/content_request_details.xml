@@ -101,7 +101,6 @@
             android:id="@+id/reyclerview_message_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/row_comment_received"
             android:paddingLeft="16dp"
             android:scrollbars="vertical" />
