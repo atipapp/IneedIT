@@ -25,6 +25,7 @@ import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.R;
 import hu.autsoft.pppttl.ineedit.model.Request;
+import hu.autsoft.pppttl.ineedit.profile.ProfileActivity;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.RequestCreateOrEditDialog;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.SaveRequestCallbackListener;
 import hu.autsoft.pppttl.ineedit.requestdetails.RequestDetailsActivity;
@@ -90,7 +91,19 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         username.setText(usernameString != null ? usernameString : "No displayname given");
 
         navigationView.setCheckedItem(R.id.nav_all_requests);
+
+        header.findViewById(R.id.profilePicture).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToProfile();
+            }
+        });
         setTitle(getString(R.string.activity_all_requests));
+    }
+
+    private void navigateToProfile() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 
     @Override
