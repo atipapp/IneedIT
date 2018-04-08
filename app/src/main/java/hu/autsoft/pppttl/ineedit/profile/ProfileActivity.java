@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,12 +23,6 @@ import hu.autsoft.pppttl.ineedit.useredit.UserEditDialog;
 public class ProfileActivity extends AppCompatActivity implements ProfileContract.ProfileView, SaveUserCallbackListener {
     public static final String USER_ID = "USER_ID";
 
-    @Inject
-    ProfileContract.ProfilePresenter presenter;
-
-    private String uid;
-    private User currentUser;
-
     @BindView(R.id.userPhone)
     TextView phoneNumberTv;
     @BindView(R.id.userLoginEmail)
@@ -41,6 +36,12 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @Inject
+    ProfileContract.ProfilePresenter presenter;
+
+    private String uid;
+    private User currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         uid = getIntent().getStringExtra(USER_ID);
@@ -50,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" ");
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -69,6 +71,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     @Override
     public void closeUI() {
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
