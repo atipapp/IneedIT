@@ -6,8 +6,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import javax.inject.Inject;
-
 import hu.autsoft.pppttl.ineedit.model.User;
 
 /**
@@ -17,7 +15,6 @@ public class ProfileInteractorImpl implements ProfileContract.ProfileInteractor 
     private static final String CHILD_NAME = "users";
     private User currentUser;
 
-    @Inject
     ProfileContract.ProfilePresenter presenter;
 
     @Override
@@ -25,7 +22,8 @@ public class ProfileInteractorImpl implements ProfileContract.ProfileInteractor 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
-        databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(uid).addValueEventListener(new ValueEventListener() {
+        DatabaseReference userdb = databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(uid);
+        userdb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentUser = dataSnapshot.getValue(User.class);
@@ -41,6 +39,12 @@ public class ProfileInteractorImpl implements ProfileContract.ProfileInteractor 
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public void setPresenter(ProfileContract.ProfilePresenter presenter) {
+        this.presenter = presenter;
+        subscribeToUser(presenter.getSelectedUserId());
     }
 
     @Override

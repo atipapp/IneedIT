@@ -15,6 +15,7 @@ public class ProfilePresenterImpl extends BasePresenter<ProfileContract.ProfileV
     public ProfilePresenterImpl(ProfileContract.ProfileView view, ProfileContract.ProfileInteractor interactor) {
         this.interactor = interactor;
         this.view = view;
+        this.interactor.setPresenter(this);
     }
 
     @Override
@@ -40,5 +41,10 @@ public class ProfilePresenterImpl extends BasePresenter<ProfileContract.ProfileV
     @Override
     public void updateUI() {
         view.updateUI();
+    }
+
+    @Override
+    public String getSelectedUserId() {
+        return view.getSelectedUserId();
     }
 }

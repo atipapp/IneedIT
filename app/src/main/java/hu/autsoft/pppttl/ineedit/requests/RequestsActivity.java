@@ -105,6 +105,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
 
     private void navigateToProfile() {
         Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra(ProfileActivity.USER_ID, presenter.getCurrentUID());
         startActivity(intent);
     }
 

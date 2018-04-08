@@ -13,6 +13,8 @@ public interface ProfileContract {
         void saveUser(User user);
 
         void subscribeToUser(String uid);
+
+        void setPresenter(ProfilePresenter presenter);
     }
 
     interface ProfilePresenter {
@@ -25,11 +27,15 @@ public interface ProfileContract {
         void closeUI();
 
         void updateUI();
+
+        String getSelectedUserId();
     }
 
     interface ProfileView {
         void closeUI();
 
         void updateUI();
+
+        String getSelectedUserId();
     }
 }

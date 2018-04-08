@@ -89,4 +89,9 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
         this.presenter = presenter;
         subscribeToRequests();
     }
+
+    @Override
+    public String getCurrentUID() {
+        return currentUser.getUid();
+    }
 }
