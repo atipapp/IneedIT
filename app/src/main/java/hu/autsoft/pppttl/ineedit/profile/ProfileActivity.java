@@ -81,10 +81,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(currentUser.getFullName());
 
-            phoneNumberTv.setText(currentUser.getPhoneNumber());
-            loginEmailTv.setText(currentUser.getWorkEmail()); //TODO
-            workEmailTv.setText(currentUser.getWorkEmail());
-            workAddressTv.setText(currentUser.getWorkAddress());
+            if (currentUser.getPhoneNumber().replace(" ", "").length() > 0)
+                phoneNumberTv.setText(currentUser.getPhoneNumber());
+            if (currentUser.getEmail().replace(" ", "").length() > 0)
+                loginEmailTv.setText(currentUser.getEmail());
+            if (currentUser.getWorkEmail().replace(" ", "").length() > 0)
+                workEmailTv.setText(currentUser.getWorkEmail());
+            if (currentUser.getWorkAddress().replace(" ", "").length() > 0)
+                workAddressTv.setText(currentUser.getWorkAddress());
         }
     }
 

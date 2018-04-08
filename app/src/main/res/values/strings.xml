@@ -32,4 +32,7 @@
     <string name="user_work_email">Work email</string>
     <string name="user_phone_number">Phone number</string>
     <string name="user_work_adress">Work address</string>
+    <string name="user_profile_privacy_message">Feel free to share only the data you would like others to know</string>
+    <string name="update">Update</string>
+    <string name="edit">Edit</string>
 </resources>
