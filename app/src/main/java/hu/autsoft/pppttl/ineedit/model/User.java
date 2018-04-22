@@ -1,5 +1,8 @@
 package hu.autsoft.pppttl.ineedit.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by pppttl on 2018. 03. 27..
  */
@@ -12,7 +15,7 @@ public class User {
     private String workAddress;
     private String fullName;
     private Boolean admin;
-    private String notificationToken;
+    private List<String> notificationTokens;
 
     public User() {
         uID = "";
@@ -23,12 +26,14 @@ public class User {
         workAddress = "n/a";
         fullName = "n/a";
         admin = false;
+        notificationTokens = new ArrayList<>();
     }
 
     public User(String uID, String email) {
         this.uID = uID;
         this.email = email;
         this.admin = false;
+        notificationTokens = new ArrayList<>();
     }
 
     public String getuID() {
@@ -91,11 +96,15 @@ public class User {
         return admin;
     }
 
-    public String getNotificationToken() {
-        return notificationToken;
+    public List<String> getNotificationTokens() {
+        return notificationTokens;
     }
 
-    public void setNotificationToken(String notificationToken) {
-        this.notificationToken = notificationToken;
+    public void setNotificationTokens(List<String> notificationTokens) {
+        this.notificationTokens = notificationTokens;
+    }
+
+    public void addNotificationToken(String notificationToken) {
+        notificationTokens.add(notificationToken);
     }
 }
