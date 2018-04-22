@@ -69,7 +69,7 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
                         user.setuID(currentUser.getUid());
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
-                        user.setNotificationToken(notificationToken);
+                        user.addNotificationToken(notificationToken);
                         databaseReference.setValue(user);
                     }
                 }
