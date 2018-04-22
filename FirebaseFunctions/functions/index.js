@@ -12,15 +12,14 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-exports.sendStatusChangeNotification = functions.database.ref('/requests/{requestID}/status')
-    .onWrite((change, context) => {
+exports.sendStatusChangeNotification = functions.database.ref('/requests/{requestID}')
+    .onUpdate((change, context) => {
 
         const requestID = context.params.requestID;
+        const userID = change.after._data.userID;        
 
         console.log(requestID, ' status changed');
-        // Get the request
-        const request = admin.database().ref(`/requests/${requestID}`).once('value')
-        const userID = request.userID;
+        console.log(userID, ' is the userID');
 
         // Get the list of device notification tokens.
         const getDeviceTokensPromise = admin.database().ref(`/users/${userID}/notificationTokens`).once('value');
@@ -31,8 +30,12 @@ exports.sendStatusChangeNotification = functions.database.ref('/requests/{reques
         // The array containing all the user's tokens.
         let tokens;
 
+        if (change.before._data.status === change.after._data.status){
+            return console.log('The status was not changed. Ignoring.');
+        }
+
         return Promise.all([getDeviceTokensPromise]).then(results => {
-            tokensSnapshot = results[0];
+            tokensSnapshot = results[0];           
 
             if (!tokensSnapshot.hasChildren()) {
                 return console.log('There are no notification tokens to send to.');
@@ -44,13 +47,13 @@ exports.sendStatusChangeNotification = functions.database.ref('/requests/{reques
             const payload = {
                 notification: {
                     title: 'Your request status has been updated!',
-                    body: `${request.name} is now ${request.status}.`
+                    body: `${change.after._data.name} is now ${change.after._data.status}.`
                 }
-            };
+            };            
+               
+            tokens = tokensSnapshot.val(); //Not an array. Array doesn't work for some reason
 
-            // Listing all tokens as an array.
-            tokens = Object.keys(tokensSnapshot.val());
-            // Send notifications to all tokens.
+            // Send notifications to all tokens.            
             return admin.messaging().sendToDevice(tokens, payload);
         }).then((response) => {
             // For each message check if there was an error.
