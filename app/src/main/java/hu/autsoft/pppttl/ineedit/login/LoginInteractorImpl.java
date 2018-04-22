@@ -70,8 +70,12 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
                         user.addNotificationToken(notificationToken);
-                        databaseReference.setValue(user);
+                    } else {
+                        if (!user.getNotificationTokens().contains(notificationToken)) {
+                            user.addNotificationToken(notificationToken);
+                        }
                     }
+                    databaseReference.setValue(user);
                 }
 
                 @Override
