@@ -12,6 +12,7 @@ public class User {
     private String workAddress;
     private String fullName;
     private Boolean admin;
+    private String notificationToken;
 
     public User() {
         uID = "";
@@ -88,5 +89,13 @@ public class User {
 
     public Boolean isAdmin() {
         return admin;
+    }
+
+    public String getNotificationToken() {
+        return notificationToken;
+    }
+
+    public void setNotificationToken(String notificationToken) {
+        this.notificationToken = notificationToken;
     }
 }
