@@ -23,7 +23,7 @@ exports.sendStatusChangeNotification = functions.database.ref('/requests/{reques
         const userID = request.userID;
 
         // Get the list of device notification tokens.
-        const getDeviceTokensPromise = admin.database().ref(`/users/${userID}/notificationTokens`).once('value');
+        const getDeviceTokensPromise = admin.database().ref(`/users/${userID}/notificationToken`).once('value');
         
         // The snapshot to the user's tokens.
         let tokensSnapshot;
