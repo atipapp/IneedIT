@@ -41,7 +41,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
                     }
-                    user.setNotificationToken(refreshedToken);
+                    user.addNotificationToken(refreshedToken);
                     databaseReference.setValue(user);
                 }
 
