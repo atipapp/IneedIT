@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import hu.autsoft.pppttl.ineedit.model.User;
 
@@ -23,7 +24,7 @@ import hu.autsoft.pppttl.ineedit.model.User;
 
 public class LoginInteractorImpl implements LoginContract.LoginInteractor {
     private static final String TAG = "LoginInteractorImpl";
-    private static final String USERS_NAME = "users";
+    public static final String USERS_NAME = "users";
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser currentUser;
     private User user;
@@ -55,6 +56,8 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
 
     private void saveCurrentUserEmail() {
         if (currentUser != null) {
+            final String notificationToken = FirebaseInstanceId.getInstance().getToken();
+
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference databaseReference = database.getReference().child(USERS_NAME).child(currentUser.getUid());
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -66,6 +69,7 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
                         user.setuID(currentUser.getUid());
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
+                        user.setNotificationToken(notificationToken);
                         databaseReference.setValue(user);
                     }
                 }
