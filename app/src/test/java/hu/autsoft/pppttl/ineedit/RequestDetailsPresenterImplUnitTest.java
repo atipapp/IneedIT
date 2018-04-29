@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -33,9 +34,15 @@ public class RequestDetailsPresenterImplUnitTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
+    private RequestDetailsPresenterImpl presenter;
+
+    @Before
+    public void setUp() {
+        presenter = new RequestDetailsPresenterImpl(view, interactor);
+    }
+
     @Test
     public void getRequestTest() {
-        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
         presenter.getRequest();
 
         verify(interactor).getRequest();
@@ -43,7 +50,6 @@ public class RequestDetailsPresenterImplUnitTest {
 
     @Test
     public void updateUITest() {
-        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
         presenter.updateUI();
 
         verify(view).updateUI();
@@ -51,15 +57,20 @@ public class RequestDetailsPresenterImplUnitTest {
 
     @Test
     public void updateRequestTest() {
-        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
         presenter.updateRequest(request);
 
         verify(interactor).updateRequest(request);
     }
 
     @Test
+    public void getUserEmailTest() {
+        presenter.getUserEmail();
+
+        verify(interactor).getUserEmail();
+    }
+
+    @Test
     public void sendCommentTest() {
-        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
         presenter.sendComment(comment);
 
         verify(interactor).sendComment(comment);
@@ -67,9 +78,22 @@ public class RequestDetailsPresenterImplUnitTest {
 
     @Test
     public void closeUITest() {
-        RequestDetailsPresenterImpl presenter = new RequestDetailsPresenterImpl(view, interactor);
         presenter.closeUI();
 
         verify(view).closeUI();
+    }
+
+    @Test
+    public void getSelectedRequestIdTest() {
+        presenter.getSelectedRequestId();
+
+        verify(view).getSelectedRequestId();
+    }
+
+    @Test
+    public void isCurrentUserAdmin() {
+        presenter.isCurrentUserAdmin();
+
+        verify(interactor).isCurrentUserAdmin();
     }
 }
