@@ -35,4 +35,9 @@
     <string name="user_profile_privacy_message">Feel free to share only the data you would like others to know</string>
     <string name="update">Update</string>
     <string name="edit">Edit</string>
+    <string name="log_out">Log out</string>
+    <string name="all">All</string>
+    <string name="pending">Pending</string>
+    <string name="accepted">Accepted</string>
+    <string name="denied">Denied</string>
 </resources>

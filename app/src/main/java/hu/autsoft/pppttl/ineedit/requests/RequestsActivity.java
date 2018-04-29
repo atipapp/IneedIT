@@ -134,9 +134,7 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_dashboard) {
-
-        } else if (id == R.id.nav_settings) {
+        if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_all_requests) {
             setTitle(getString(R.string.activity_all_requests));
