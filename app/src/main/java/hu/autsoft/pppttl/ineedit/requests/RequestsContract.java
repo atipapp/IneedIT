@@ -22,6 +22,8 @@ public interface RequestsContract {
         void setPresenter(RequestsPresenter presenter);
 
         String getCurrentUID();
+
+        void logout();
     }
 
     interface RequestsPresenter {
@@ -36,6 +38,8 @@ public interface RequestsContract {
         String getCurrentUserEmail();
 
         String getCurrentUID();
+
+        void logout();
     }
 
     interface RequestsView {

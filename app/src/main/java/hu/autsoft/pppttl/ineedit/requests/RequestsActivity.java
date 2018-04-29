@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 import hu.autsoft.pppttl.ineedit.R;
+import hu.autsoft.pppttl.ineedit.login.LoginActivity;
 import hu.autsoft.pppttl.ineedit.model.Request;
 import hu.autsoft.pppttl.ineedit.profile.ProfileActivity;
 import hu.autsoft.pppttl.ineedit.requestcreateoredit.RequestCreateOrEditDialog;
@@ -135,7 +136,10 @@ public class RequestsActivity extends AppCompatActivity implements RequestsContr
         int id = item.getItemId();
 
         if (id == R.id.nav_logout) {
-
+            presenter.logout();
+            Intent intent = new Intent(RequestsActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.nav_all_requests) {
             setTitle(getString(R.string.activity_all_requests));
             adapter.filterRequests(null);

@@ -115,4 +115,9 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
     public String getCurrentUID() {
         return currentUser.getUid();
     }
+
+    @Override
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+    }
 }
