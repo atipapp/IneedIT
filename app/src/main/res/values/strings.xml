@@ -40,4 +40,7 @@
     <string name="pending">Pending</string>
     <string name="accepted">Accepted</string>
     <string name="denied">Denied</string>
+    <string name="url">URL</string>
+    <string name="price">Price</string>
+    <string name="issued_by">Issued by</string>
 </resources>
