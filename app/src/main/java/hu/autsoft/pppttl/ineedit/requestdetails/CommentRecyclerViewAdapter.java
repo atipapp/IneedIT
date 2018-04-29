@@ -2,6 +2,7 @@ package hu.autsoft.pppttl.ineedit.requestdetails;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class CommentRecyclerViewAdapter
         comments = new ArrayList<>();
     }
 
+    @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
@@ -43,13 +45,11 @@ public class CommentRecyclerViewAdapter
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.row_comment_sent, parent, false);
             return new SentMessageHolder(view);
-        } else if (viewType == VIEW_TYPE_MESSAGE_RECEIVED) {
-            view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.row_comment_received, parent, false);
-            return new ReceivedMessageHolder(view);
         }
 
-        return null;
+        view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_comment_received, parent, false);
+        return new ReceivedMessageHolder(view);
     }
 
     @Override
