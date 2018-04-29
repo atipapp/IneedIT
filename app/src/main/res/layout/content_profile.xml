@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/ivContactItem1"
@@ -26,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_phone_black_24dp" />
+                android:src="@drawable/ic_phone_black_24dp"
+                android:contentDescription="@string/phone_logo" />
 
             <TextView
                 android:id="@+id/userPhone"
@@ -48,7 +50,8 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/ivContactItem3"
@@ -57,7 +60,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_email_black_24dp" />
+                android:src="@drawable/ic_email_black_24dp"
+                android:contentDescription="@string/email_logo" />
 
             <TextView
                 android:id="@+id/userLoginEmail"
@@ -93,7 +97,8 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/ivContactItem4"
@@ -103,7 +108,8 @@
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:src="@drawable/ic_email_black_24dp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                android:contentDescription="@string/email_logo" />
 
             <TextView
                 android:id="@+id/userWorkEmail"
@@ -141,7 +147,8 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/ivContactItem6"
@@ -150,7 +157,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_location_on_black_24dp" />
+                android:src="@drawable/ic_location_on_black_24dp"
+                android:contentDescription="@string/location_logo" />
 
             <TextView
                 android:id="@+id/userWorkAddress"

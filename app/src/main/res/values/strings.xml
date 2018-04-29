@@ -41,4 +41,10 @@
     <string name="accepted">Accepted</string>
     <string name="denied">Denied</string>
     <string name="issued_by">Issued by</string>
+    <string name="application_logo">Application logo</string>
+    <string name="logo_corresponding_to_the_type">Logo corresponding to the type</string>
+    <string name="phone_logo">Phone logo</string>
+    <string name="email_logo">Email logo</string>
+    <string name="location_logo">Location logo</string>
+    <string name="send">SEND</string>
 </resources>
