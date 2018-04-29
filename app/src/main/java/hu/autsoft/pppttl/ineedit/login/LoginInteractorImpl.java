@@ -66,7 +66,7 @@ public class LoginInteractorImpl implements LoginContract.LoginInteractor {
                     user = dataSnapshot.getValue(User.class);
                     if (user == null) {
                         user = new User();
-                        user.setuID(currentUser.getUid());
+                        user.setUID(currentUser.getUid());
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
                         user.addNotificationToken(notificationToken);

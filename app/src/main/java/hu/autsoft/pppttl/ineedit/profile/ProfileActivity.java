@@ -63,7 +63,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         UserEditDialog dialog = new UserEditDialog();
         if (currentUser == null) {
             currentUser = new User();
-            currentUser.setuID(uid);
+            currentUser.setUID(uid);
         }
         dialog.show("Edit user", view, currentUser, this);
     }
