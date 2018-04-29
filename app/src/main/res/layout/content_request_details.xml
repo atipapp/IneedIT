@@ -11,29 +11,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/text_margin"
             android:weightSum="6">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_margin"
-                android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
-                android:text="URL"/>
+                android:text="@string/url" />
 
             <TextView
                 android:id="@+id/detailsURL"
                 android:layout_width="0dp"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:textSize="20sp"
                 android:text="@string/n_a"
                 android:autoLink="web"/>
@@ -44,22 +43,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/text_margin"
             android:weightSum="6">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
-                android:text="Price" />
+                android:text="@string/price" />
 
             <TextView
                 android:id="@+id/detailsPrice"
                 android:layout_width="0dp"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
                 android:text="@string/n_a" />
         </LinearLayout>
@@ -73,33 +71,55 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
                 android:text="Status" />
 
             <TextView
                 android:id="@+id/detailsStatus"
                 android:layout_width="0dp"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
                 android:textSize="20sp"
                 android:text="@string/n_a" />
 
             <Spinner
+                android:layout_weight="4"
                 android:id="@+id/adminStatusSpinner"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/issued_by" />
+
+            <TextView
+                android:id="@+id/detailsIssuer"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/n_a" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
-            android:layout_marginLeft="@dimen/text_margin"
             android:textSize="20sp"
             android:text="@string/comments"/>
 
@@ -108,8 +128,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/row_comment_received"
-            android:paddingLeft="16dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:layout_marginBottom="@dimen/nav_header_height" />
 
     </LinearLayout>
 
