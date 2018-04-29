@@ -58,7 +58,7 @@ public class ProfileInteractorImpl implements ProfileContract.ProfileInteractor 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
-        databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(currentUser.getuID()).setValue(currentUser);
+        databaseReference.child(ProfileInteractorImpl.CHILD_NAME).child(currentUser.getUID()).setValue(currentUser);
         if (presenter != null) presenter.updateUI();
     }
 }

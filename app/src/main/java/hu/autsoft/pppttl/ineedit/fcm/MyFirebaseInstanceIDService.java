@@ -37,7 +37,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
                     User user = dataSnapshot.getValue(User.class);
                     if (user == null) {
                         user = new User();
-                        user.setuID(currentUser.getUid());
+                        user.setUID(currentUser.getUid());
                         user.setEmail(currentUser.getEmail());
                         user.setWorkEmail(currentUser.getEmail());
                     }

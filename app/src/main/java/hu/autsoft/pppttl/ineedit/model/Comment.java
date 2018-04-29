@@ -2,22 +2,24 @@ package hu.autsoft.pppttl.ineedit.model;
 
 import java.util.Calendar;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Created by pppttl on 2018. 03. 07..
  */
-
+@Data
+@Getter
+@Setter
 public class Comment {
     private String userEmail;
     private String message;
     private long createdAt;
 
+    @SuppressWarnings("unused")
     public Comment() {
-    }
-
-    public Comment(String userID, String message, long createdAt) {
-        this.userEmail = userID;
-        this.message = message;
-        this.createdAt = createdAt;
+        //Required by ORM
     }
 
     public Comment(String userID, String message) {
@@ -27,29 +29,5 @@ public class Comment {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 0);
         this.createdAt = today.getTimeInMillis();
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public long getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
     }
 }
