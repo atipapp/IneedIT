@@ -108,9 +108,9 @@ public class CommentRecyclerViewAdapter
         public ReceivedMessageHolder(View view) {
             super(view);
             mView = view;
-            name = (TextView) view.findViewById(R.id.text_message_name);
-            comment = (TextView) view.findViewById(R.id.text_message_body);
-            time = (TextView) view.findViewById(R.id.text_message_time);
+            name = view.findViewById(R.id.text_message_name);
+            comment = view.findViewById(R.id.text_message_body);
+            time = view.findViewById(R.id.text_message_time);
         }
 
         void bind(Comment comm) {
@@ -128,8 +128,8 @@ public class CommentRecyclerViewAdapter
         public SentMessageHolder(View view) {
             super(view);
             mView = view;
-            comment = (TextView) view.findViewById(R.id.text_message_body);
-            time = (TextView) view.findViewById(R.id.text_message_time);
+            comment = view.findViewById(R.id.text_message_body);
+            time = view.findViewById(R.id.text_message_time);
         }
 
         void bind(Comment comm) {
