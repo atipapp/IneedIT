@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/logo_corresponding_to_the_type" />
 
             <TextView
                 android:layout_width="wrap_content"
