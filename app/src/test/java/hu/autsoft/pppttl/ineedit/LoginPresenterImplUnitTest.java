@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -28,9 +29,15 @@ public class LoginPresenterImplUnitTest {
     private static final String FAKE_USERNAME = "email@email.com";
     private static final String FAKE_PASSWORD = "123456";
 
+    private LoginPresenterImpl presenter;
+
+    @Before
+    public void setUp() {
+        presenter = new LoginPresenterImpl(loginView, loginInteractor);
+    }
+
     @Test
     public void validateCredentialsTest() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.validateCredentials(FAKE_USERNAME, FAKE_PASSWORD);
 
         verify(loginView).showProgress();
@@ -39,7 +46,6 @@ public class LoginPresenterImplUnitTest {
 
     @Test
     public void autoLoginTest_NotLoggedIn() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.autoLogin();
 
         when(loginInteractor.isLoggedIn()).thenReturn(false);
@@ -48,7 +54,6 @@ public class LoginPresenterImplUnitTest {
 
     @Test
     public void autoLoginTest_LoggedIn() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.autoLogin();
 
         when(loginInteractor.isLoggedIn()).thenReturn(true);
@@ -57,7 +62,6 @@ public class LoginPresenterImplUnitTest {
 
     @Test
     public void onUsernameErrorTest() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.onUsernameError();
 
         verify(loginView).setUsernameError();
@@ -66,7 +70,6 @@ public class LoginPresenterImplUnitTest {
 
     @Test
     public void onPasswordErrorTest() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.onPasswordError();
 
         verify(loginView).setPasswordError();
@@ -75,7 +78,6 @@ public class LoginPresenterImplUnitTest {
 
     @Test
     public void onSuccessTest() {
-        LoginPresenterImpl presenter = new LoginPresenterImpl(loginView, loginInteractor);
         presenter.onSuccess();
 
         verify(loginView).navigateToHome();
