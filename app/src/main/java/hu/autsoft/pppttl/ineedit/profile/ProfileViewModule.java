@@ -9,5 +9,6 @@ import dagger.Module;
 @Module
 public abstract class ProfileViewModule {
     @Binds
+    @SuppressWarnings("unused")
     abstract ProfileContract.ProfileView provideProfileView(ProfileActivity profileActivity);
 }
