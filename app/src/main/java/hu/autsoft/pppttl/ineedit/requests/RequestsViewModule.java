@@ -10,5 +10,6 @@ import dagger.Module;
 @Module
 public abstract class RequestsViewModule {
     @Binds
+    @SuppressWarnings("unused")
     abstract RequestsContract.RequestsView provideRequestsView(RequestsActivity requestsActivity);
 }
