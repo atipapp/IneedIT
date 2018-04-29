@@ -1,5 +1,6 @@
 package hu.autsoft.pppttl.ineedit;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -35,31 +36,61 @@ public class RequestsPresenterImplUnitTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
+    private RequestsPresenterImpl presenter;
+
+    @Before
+    public void setUp() {
+        presenter = new RequestsPresenterImpl(view, interactor);
+    }
+
     @Test
     public void saveRequestTest() {
-        RequestsPresenterImpl presenter = new RequestsPresenterImpl(view, interactor);
-
         presenter.saveRequest(request);
+
         verify(interactor).saveRequest(request);
     }
 
     @Test
     public void getRequestsTest() {
-        RequestsPresenterImpl presenter = new RequestsPresenterImpl(view, interactor);
-
         presenter.getRequests();
+
         verify(interactor).getRequests();
     }
 
     @Test
     public void onRequestDataChangedTest() {
-        RequestsPresenterImpl presenter = new RequestsPresenterImpl(view, interactor);
-
-
         when(interactor.getRequests()).thenReturn(requests);
         presenter.onRequestDataChanged();
 
         verify(interactor).getRequests();
         verify(view).onRequestDataChanged(requests);
+    }
+
+    @Test
+    public void getCurrentUsernameTest() {
+        presenter.getCurrentUsername();
+
+        verify(interactor).getCurrentUsername();
+    }
+
+    @Test
+    public void getCurrentUserEmailTest() {
+        presenter.getCurrentUserEmail();
+
+        verify(interactor).getCurrentUserEmail();
+    }
+
+    @Test
+    public void getCurrentUIDTest() {
+        presenter.getCurrentUID();
+
+        verify(interactor).getCurrentUID();
+    }
+
+    @Test
+    public void logoutTest() {
+        presenter.logout();
+
+        verify(interactor).logout();
     }
 }
