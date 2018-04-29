@@ -13,6 +13,7 @@ public class Request {
     private String link;
     private int price;
     private String userID;
+    private String issuerEmail;
     private String requestID;
     private List<Comment> comments;
 
@@ -36,6 +37,7 @@ public class Request {
         this.link = "";
         this.price = 0;
         this.comments = new ArrayList<>();
+        this.issuerEmail = "";
     }
 
     public Request(Request request) {
@@ -45,7 +47,8 @@ public class Request {
         price = request.getPrice();
         userID = request.getUserID();
         requestID = request.getRequestID();
-        this.comments = request.getComments();
+        comments = request.getComments();
+        issuerEmail = request.getIssuerEmail();
     }
 
     public String getName() {
@@ -112,5 +115,13 @@ public class Request {
         if (status.equals(Status.ACCEPTED)) return 1;
         if (status.equals(Status.DENIED)) return 2;
         return 0;
+    }
+
+    public String getIssuerEmail() {
+        return issuerEmail;
+    }
+
+    public void setIssuerEmail(String issuerEmail) {
+        this.issuerEmail = issuerEmail;
     }
 }

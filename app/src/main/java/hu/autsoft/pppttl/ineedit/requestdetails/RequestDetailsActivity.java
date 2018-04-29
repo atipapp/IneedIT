@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -49,6 +50,10 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
     RecyclerView recyclerView;
     @BindView(R.id.adminStatusSpinner)
     Spinner adminStatusSpinner;
+    @BindView(R.id.issuedByLayout)
+    LinearLayout issuedBylayout;
+    @BindView(R.id.detailsIssuer)
+    TextView detailsIssuer;
 
     @Inject
     RequestDetailsContract.RequestDetailsPresenter presenter;
@@ -90,9 +95,12 @@ public class RequestDetailsActivity extends AppCompatActivity implements Request
             adminStatusSpinner.setVisibility(View.VISIBLE);
             adminStatusSpinner.setSelection(request.getStatusID());
             statusView.setVisibility(View.GONE);
+            issuedBylayout.setVisibility(View.VISIBLE);
+            detailsIssuer.setText(request.getIssuerEmail());
         } else {
             adminStatusSpinner.setVisibility(View.GONE);
             statusView.setVisibility(View.VISIBLE);
+            issuedBylayout.setVisibility(View.GONE);
         }
     }
 

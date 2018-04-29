@@ -73,6 +73,7 @@ public class RequestsInteractorImpl implements RequestsContract.RequestsInteract
         DatabaseReference databaseReference = database.getReference();
 
         request.setUserID(currentUser.getUid());
+        request.setIssuerEmail(currentUser.getEmail());
         databaseReference.child(CHILD_NAME).push().setValue(request);
     }
 
