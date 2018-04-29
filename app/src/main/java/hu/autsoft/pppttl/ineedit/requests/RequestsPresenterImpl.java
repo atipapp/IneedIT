@@ -52,4 +52,9 @@ public class RequestsPresenterImpl extends BasePresenter<RequestsContract.Reques
     public String getCurrentUID() {
         return interactor.getCurrentUID();
     }
+
+    @Override
+    public void logout() {
+        interactor.logout();
+    }
 }
