@@ -51,9 +51,9 @@ to separate the notification of status changes and new comments.
 
 ## Screenshots
 <p align="center">
-    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/1-login.png" alt="Login screen"/>
-    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/2-requests.png" alt="Requests screen"/>
-    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/3-requestdetails.png" alt="Request details screen"/>
-    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/4-notification.png" alt="Notification sent by the application"/>
+    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/1-login.png?raw=true" alt="Login screen" height="400" width="216"/>
+    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/2-requests.png?raw=true" alt="Requests screen" height="400" width="216"/>
+    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/3-requestdetails.png?raw=true" alt="Request details screen" height="400" width="216"/>
+    <img src="https://github.com/pppttl/IneedIT/blob/master/Screenshots/4-notification.png?raw=true" alt="Notification sent by the application" height="400" width="216"/>
 
 </p>
