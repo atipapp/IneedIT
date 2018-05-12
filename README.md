@@ -1,5 +1,7 @@
 # IneedIT
-![alt text](https://github.com/pppttl/IneedIT/blob/master/app/src/main/res/drawable-hdpi/application_logo.png "The application's logo")
+<p align="center">
+  <img src="https://github.com/pppttl/IneedIT/blob/master/app/src/main/res/drawable-mdpi/application_logo.png" alt="Application logo"/>
+</p>
 
 ## Introduction
 IneedIT is an Android application for small companies to manage their
