@@ -51,4 +51,4 @@ and I used this tool.
 * ***Mockito***: Easily mock-out complicated objects in unit tests.
 * ***Notification channels***: The application uses Android 8's new feature,
 to separate the notification of status changes and new comments.
-* ***Travis CI***
+* ***Travis CI***: [![Build Status](https://travis-ci.org/pppttl/IneedIT.svg?branch=master)](https://travis-ci.org/pppttl/IneedIT)
