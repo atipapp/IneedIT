@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "196982007276",
+    "firebase_url": "https://ineedit-15.firebaseio.com",
+    "project_id": "ineedit-15",
+    "storage_bucket": "ineedit-15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196982007276:android:3c21c9cc4507f2b6",
+        "android_client_info": {
+          "package_name": "hu.autsoft.pppttl.ineedit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196982007276-rumtu5qms5p4mequvbluflas1sm57slu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.autsoft.pppttl.ineedit",
+            "certificate_hash": "4ba9c2735f631fe339b06dbd81a0ef6e1ca84d6e"
+          }
+        },
+        {
+          "client_id": "196982007276-nhd5vrc2cplai0dsorbj73sqe1lkv4rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlo3TNOXBB-2SLtBmMSgeqh-cRjgwntEU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196982007276-nhd5vrc2cplai0dsorbj73sqe1lkv4rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
